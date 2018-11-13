@@ -1,0 +1,104 @@
+/*Main Index*/
+.carudemo{
+	margin-top: 55px;
+	margin-bottom: 20px;
+}
+a:hover{
+	
+	text-decoration: none;
+}
+.caruimg{
+	width: 100%; height:auto;
+}
+.rcc{
+	width: 150px;
+	height: 125px;
+}
+#nvlk{
+	color: white;			
+}
+#icon{
+	color: white;
+	position: fixed;
+}
+h1{
+	text-align: center;
+}
+h2{
+	text-align: center;
+}
+h3{
+	text-align: center;
+}
+h4{
+	text-align: center;
+}
+#b{
+	float: center;
+
+}
+.rounded-circle{
+	width: 150px;
+	height: 125px;
+	margin-right: : auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.rcc2{
+	width: 580px;
+	height: 400px;
+}
+.rcc3{
+	width: 150px;
+	height: 125px;
+}
+.rc{
+	height: 70px;
+	width: 70px
+}
+.rc1{
+	height: 40px;
+	width: 40px;
+}
+#na{
+	margin: 20px;
+	padding: 20px;
+}
+#fu{
+	text-align: center;
+	margin: auto;
+	padding: 200px;
+}
+#footer{
+	background-color: #212529;
+	color: white;
+	margin-top: 80px;
+}
+.content{
+
+	margin-top: 60px; 
+}
+
+#p{
+	text-align:auto;
+	color: white;
+}
+#pp{
+	color: white;
+	float: left;
+	margin: 10px;
+	padding: 230px;
+	background-color: black;
+}
+#p1{
+	float: right;
+	color: white;
+}
+#uname{
+	text-align: center;
+}
+/*Main Index*/
+/*Category*/
+
+/*Category*/
+

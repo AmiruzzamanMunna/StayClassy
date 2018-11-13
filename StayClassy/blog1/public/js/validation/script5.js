@@ -1,0 +1,21 @@
+$(document).ready(function() {
+	$("#checkout-form").validate({
+		rules:{
+			name:{
+				required:true,
+			},
+			mb1:{
+				required:true,
+			},
+			mb2:{
+				required:true,
+			},
+			address:{
+				required:true,
+			},
+			email:{
+				required:true,
+			}
+		}
+	});
+});

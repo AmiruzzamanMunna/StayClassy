@@ -1,0 +1,81 @@
+.crd{
+	margin-top: 170px;
+}
+#icon{
+	color: white;
+}
+.tbimg{
+	width: 400px;
+	height: 400px;
+}
+.table1{
+	margin-top: 120px;
+	background-color:#343a40 ;
+	height: 330px;
+    border: 10px;
+    padding: 5px;
+    text-align: center;
+   margin-bottom: 5px;
+}
+.crd{
+	/*margin-top: 20px;
+	margin-bottom: 5px;*/
+}
+.tr{
+	color: white;
+}
+.dvtb{
+	margin-top: 120px;
+	margin-bottom: 10px;
+}
+.simg{
+	width: 150px;
+	height: 200px;
+}
+.cd{
+	margin-bottom: 1px;
+}
+.dvim{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+/*.dvpd{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	color: red;
+}*/
+.rc1{
+	height: 30px;
+	width: 30px;
+}
+#na{
+	margin: 20px;
+	padding: 20px;
+}
+#fu{
+	text-align: center;
+	margin: auto;
+	padding: 200px;
+}
+#footer{
+	margin-top: 40px;
+	background-color: #212529;
+}
+#p{
+	text-align:auto;
+	color: white;
+}
+#pp{
+	color: white;
+	float: left;
+	margin: 10px;
+	padding: 230px;
+	background-color: black;
+}
+#p1{
+	float: right;
+	color: white;
+}
+#uname{
+	text-align: center;
+}

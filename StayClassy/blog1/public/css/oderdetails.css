@@ -1,0 +1,28 @@
+#navclm{
+	padding: 10px;
+	height: 200%;
+	color:white;
+	background-color:  #212529
+
+}
+#cc{
+	float: right;
+}
+#drp{
+	color: #212529;
+}
+.h{
+	color: white;
+}
+.nav-link{
+	color: white;
+	border-bottom: 1px solid;
+}
+.nav-item{
+	margin-top: 5px;
+	border-bottom: 1px solid;
+}
+/*.bg{
+	height: 400px;
+	width: auto;
+}*/

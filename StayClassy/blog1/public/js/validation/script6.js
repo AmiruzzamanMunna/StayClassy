@@ -1,0 +1,29 @@
+$(document).ready(function() {
+	$("#adminregistration").validate({
+		rules:{
+			name:{
+				required:true
+			},
+			username:{
+				required:true
+			},
+			email:{
+				required:true,
+				email:true
+			},
+			phone:{
+				required:true,
+				mobile1:true
+			},
+			password:{
+				required:true,
+				minlength:5
+			},
+			confirm_password:{
+				required:true,
+				minlength:5,
+				// equalTo:"#password"
+			}
+		}
+	});
+});

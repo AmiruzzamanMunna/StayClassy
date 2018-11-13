@@ -1,0 +1,35 @@
+#navclm{
+	padding: 10px;
+	height: 200%;
+	color:white;
+	background-color:  #212529
+}
+#cart1{
+	height: 128px;
+	width: 128px;
+}
+#cc{
+	float: right;
+}
+#drp{
+	color: #212529;
+}
+.h{
+	color: white;
+}
+.nav-link{
+	color: white;
+	border-bottom: 1px solid;
+}
+.nav-item{
+	margin-top: 5px;
+	border-bottom: 1px solid;
+}
+.ig{
+	height: 100px;
+	width:70px
+}
+.ig1{
+	height: 150px;
+	width: 180px;
+}

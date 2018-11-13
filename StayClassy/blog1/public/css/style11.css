@@ -1,0 +1,13 @@
+.cd{
+	position: fixed;
+    top: 560px;
+    right: 15px;
+    width: 120px;
+    bottom: 10px;
+    z-index: 999;
+
+}
+#cart{
+	height: 50px;
+	width: 50px;
+}

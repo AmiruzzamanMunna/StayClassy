@@ -1,0 +1,28 @@
+#navclm{
+	padding: 10px;
+	height: 300%;
+	color:white;
+	margin-top: 60px;
+	background-color:  #212529;
+	/*position: fixed;*/
+	overflow:auto;
+
+}
+.h{
+	color: white;
+}
+#drp{
+	color: #212529;
+}
+
+.nav-link{
+	color: white;
+	border-bottom: 1px solid;
+}
+.nav-item{
+	margin-top: 5px;
+	border-bottom: 1px solid;
+}
+#cc{
+	float: right;
+}

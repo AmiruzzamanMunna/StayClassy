@@ -1,0 +1,58 @@
+#icon{
+	color: white;
+}
+.c1{
+	margin-top: 80px;
+	margin-bottom: 30px;
+}
+.crc{
+	width: 150px;
+	height: 200px;
+}
+
+.rc1{
+	height: 30px;
+	width: 30px;
+}
+#na{
+	margin: 20px;
+	padding: 20px;
+}
+#fu{
+	text-align: center;
+	margin: auto;
+	padding: 200px;
+}
+.cd{
+	position: fixed;
+    top: 560px;
+    right: 15px;
+    width: 120px;
+    bottom: 10px;
+
+}
+#cart{
+	height: 50px;
+	width: 50px;
+}
+#footer{
+	background-color: #212529;
+}
+#p{
+	text-align:auto;
+	color: white;
+}
+#pp{
+	color: white;
+	float: left;
+	margin: 10px;
+	padding: 230px;
+	background-color: black;
+}
+#p1{
+	float: right;
+	color: white;
+}
+#uname{
+	text-align: center;
+}

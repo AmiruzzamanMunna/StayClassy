@@ -1,0 +1,37 @@
+$(document).ready(function() {
+	$("#userregistration").validate({
+		rules:{
+			name:{
+				required:true
+			},
+			username:{
+				required:true
+			},
+			email:{
+				required:true,
+				email:true
+			},
+			mobile1:{
+				required:true,
+				mobile1:true
+			},
+			mobile2:{
+				required:true,
+				mobile2:true
+			},
+			address:{
+				required:true,
+				address:true
+			},
+			password:{
+				required:true,
+				minlength:5
+			},
+			confirm_password:{
+				required:true,
+				minlength:5,
+				// equalTo:"#password"
+			}
+		}
+	});
+});
