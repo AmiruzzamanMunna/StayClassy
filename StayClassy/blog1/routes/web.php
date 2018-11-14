@@ -33,7 +33,7 @@ Route::post('/details/{id}','UserController@cart')->name('user.cart');
 
 
 Route::get('/checkout/{id}','UserController@checkout')->name('user.checkout');
-Route::post('/checkout{id}','UserController@varify1')->name('user.varify1');
+Route::post('/checkout/{id}','UserController@varify1')->name('user.varify1');
 
 Route::get('/voucher/{id}','UserController@voucher')->name('user.voucher');
 Route::get('/travelling','UserController@travelling')->name('user.travel');

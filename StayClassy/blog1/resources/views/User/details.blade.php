@@ -84,9 +84,12 @@
 														<div class="col-md-5 m-auto">
 															<button type="button" id="add-cart-button" class="btn btn-success col-md-8">Add To Cart</button>
 														</div>
+														@forelse($user as $user)
 														<div class="col-md-5 ml-auto">
-															<button type="button" class="btn btn-danger col-md-8"><a href="{{route('user.checkout',[$product->id])}}">CheckOut</a></button>
+															<button type="button" class="btn btn-danger col-md-8"><a href="{{route('user.checkout',[$user->id])}}">CheckOut</a></button>
 														</div>
+														@empty
+														@endforelse
 														</div>
 													</div>
 												</div>

@@ -67,29 +67,7 @@
 					</div>			
 				</form>
 			</div>
-			<div class="col-md-4">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="card card1">
-							<div class="card-header">Product Details</div>
-							<div class="card-body">
-								<div class="form-group row">
-									<label class="col-md-6">Product Code</label>
-									<label class="col-md-6">{{$product->code}}</label>
-								</div>
-								<div class="form-group row">
-									<label class="col-md-6">Product Name</label>
-									<label class="col-md-6">{{$product->product_name}}</label>
-								</div>
-								<div class="form-group row">
-									<label class="col-md-6">Total Price</label>
-									<label class="col-md-6">{{$product->product_price}}</label>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			
 		</div>
 	</div>
 @endsection

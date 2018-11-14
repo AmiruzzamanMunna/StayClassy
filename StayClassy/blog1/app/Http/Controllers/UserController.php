@@ -82,8 +82,10 @@ class UserController extends Controller
     public function index()
     {
         $products = Product::all();
+        $user=User::all();
         $productsnew = Product::where('newarrival',1)->get();
         $productspopular = Product::where('sold_item',1)->get();
+        $cart=Carttbl::all();
         $socials = Social::all();
         $qualitys = Quality::all();
         $returns = Returnpolicy::all();
@@ -93,7 +95,9 @@ class UserController extends Controller
         $policys = Policy::all();
         $abouts = About::all();
     	return view("User.index")
+            ->with('user', $user)
             ->with('products', $products)
+            ->with('cart', $cart)
             ->with('productsnew', $productsnew)
             ->with('productspopular', $productspopular)
             ->with("socials", $socials)
@@ -229,6 +233,7 @@ class UserController extends Controller
         $product = DB::table("view_product")
             ->where('id', $id)
             ->first();
+        $user=User::all();
         $socials = Social::all();
         $qualitys = Quality::all();
         $returns = Returnpolicy::all();
@@ -239,6 +244,7 @@ class UserController extends Controller
         $abouts = About::all();
         $specifications = json_decode($product->specification);
     	return view("User.details")
+            ->with("user", $user)
             ->with("product", $product)
             ->with('specifications', $specifications)
             ->with("socials", $socials)
@@ -255,9 +261,8 @@ class UserController extends Controller
     
     public function checkout(Request $request,$id)
     {
-        $product = DB::table("view_product")
-        ->where('id',$id)
-        ->first();
+        $user = User::all()
+        ->where('id',$id);
         $socials = Social::all();
         $qualitys = Quality::all();
         $returns = Returnpolicy::all();
@@ -267,7 +272,7 @@ class UserController extends Controller
         $policys = Policy::all();
         $abouts = About::all();
     	return view("User.checkout")
-        ->with('product',$product)
+        ->with('user',$user)
         ->with("socials", $socials)
         ->with("qualitys", $qualitys)
         ->with("returns", $returns)
@@ -276,19 +281,19 @@ class UserController extends Controller
         ->with("contacts", $contacts)
         ->with("policys", $policys)
         ->with("abouts", $abouts);
-}
+    }
     public function varify1(Request $request,$id)
     {
-       $product= Product::all()
+       $user= User::all()
         ->where('id',$id)
         ->first();
         return redirect()->route("user.voucher")
-        ->with('product',$product);
+        ->with('user',$user);
     }
 
     public function voucher(Request $request,$id)
     {
-        $product= Product::all()
+        $user= Product::all()
         ->where('id',$id)
         ->first();
         $socials = Social::all();
@@ -327,7 +332,9 @@ class UserController extends Controller
     }
     public function cartshow()
     {
+        $user = User::all();
         $carts=Carttbl::all();
+        $product=Product::all();
         $socials = Social::all();
         $qualitys = Quality::all();
         $returns = Returnpolicy::all();
@@ -337,6 +344,8 @@ class UserController extends Controller
         $policys = Policy::all();
         $abouts = About::all();
         return view("User.cart")
+        ->with('user',$user)
+        ->with('product',$product)
         ->with('carts',$carts)
         ->with("qualitys", $qualitys)
         ->with("returns", $returns)

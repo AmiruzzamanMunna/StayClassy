@@ -4,11 +4,15 @@
 	<title>@yield('title')</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css')}}/style.css">
 	<link rel="stylesheet" type="text/css" href="{{asset('css')}}/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('css')}}/owl.carousel.min.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('css')}}/owl.theme.default.min.css">
 	<link rel="stylesheet" href="{{asset('css')}}/font-awesome.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 	<script src="{{asset('js')}}/jquery.min.js"></script>
 	<script src="{{asset('js')}}/popper.min.js"></script>
 	<script src="{{asset('js')}}/bootstrap.min.js"></script>
+	<script src="{{asset('js')}}/owl.carousel.min.js"></script>
+	<script src="{{asset('js')}}/owl.carousel.js"></script>
 	<script src="{{asset('js')}}/script.js"></script>
 	<script src="{{asset('js')}}/ajax.js"></script>
 	@yield('css')

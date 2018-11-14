@@ -59,8 +59,7 @@
 						<div class="card cd col-md-3 ml-auto">
 							<div class="card-header">
 								<a href="{{route('user.cartshow')}}"><img id="cart" src="{{asset('images')}}/admin/order.png"></a>
-								<p>Items:{{Cart::count()}}</p>
-								
+								<p>Items:{{Cart::count()}}</p>		
 							</div>
 						</div>
 					</div>
@@ -71,13 +70,15 @@
 	<br>
 	<div class="container">
 			<div class="row">
-				<div class="col-md-2">
-					<p id="pp">StayClassy is a Online Shop</p>
+				<div class="col-md-5">
 					<div class="row">
-						<div class="col-md-4">
-							<img class="rcc2" src="images/banner-2.jpg">
+						<div class="col-md-12">
+							<pre id="pp">StayClassy is a Online Shop</pre>
 						</div>
 					</div>
+				</div>
+				<div class="col-md-4">
+					<img class="rcc2" src="images/banner-2.jpg">
 				</div>
 			</div>
 			<div class="row">

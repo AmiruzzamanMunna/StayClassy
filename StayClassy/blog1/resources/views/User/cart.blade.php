@@ -11,7 +11,7 @@
             <div class="row">
             	<div class="col-md-7 m-auto">
             		<div class="card">
-            			<form method="POST">
+            			<form method="">
             				{{csrf_field()}}
 			            	<div class="card-header">Cart</div>
 			            	<div class="card-body">
@@ -62,9 +62,13 @@
 	            					<button type="button" class="btn btn-default"><a href="{{route('user.index')}}">Go Shopping</a></button>
 	            				</div>
 	            				<div class="col-md-2 ml-auto">
-	            					<button type="submit" class="btn btn-basic">Order</button>
+	            					@forelse($user as $user)
+	            					<button type="submit" class="btn btn-basic"><a href="{{route('user.checkout',[$user->id])}}">Order</a></button>
+	            					@empty
+	            					@endforelse
 	            				</div>
 	            			</div>
+	            			
 	            		</form>
            			 </div>
             	</div>
