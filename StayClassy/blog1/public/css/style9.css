@@ -41,6 +41,7 @@ a:hover{
     top: 430px;
     right: 5px;
     width: 120px;
+    z-index: 999;
 
 }
 #cart{

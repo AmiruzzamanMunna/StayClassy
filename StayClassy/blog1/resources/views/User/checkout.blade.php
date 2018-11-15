@@ -27,13 +27,13 @@
 							<div class="form-group row">
 								<label class="col-md-3">Mobile No(1):</label>
 								<div class="col-md-8">
-									<input type="number" class="form-control" name="mb1">
+									<input type="number" class="form-control" name="mobile1">
 								</div>
 							</div>
 							<div class="form-group row">
 								<label class="col-md-3">Mobile No(2):</label>
 								<div class="col-md-8">
-									<input type="number" class="form-control" name="mb2">
+									<input type="number" class="form-control" name="mobile2">
 								</div>
 							</div>
 							<div class="form-group row">
@@ -67,7 +67,20 @@
 					</div>			
 				</form>
 			</div>
-			
+			<div class="col-md-5">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="card cd col-md-3">
+									<div class="card-header">
+										<a href="{{route('user.cartshow')}}"><img id="cart" src="{{asset('images')}}/admin/order.png"></a>
+										<p>Items:{{Cart::count()}}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 		</div>
 	</div>
 @endsection

@@ -10,7 +10,7 @@
         <div class="col-md-12">
             <div class="row">
             	<div class="col-md-7 m-auto">
-            		<div class="card">
+            		<div class="card" id="card">
             			<form method="">
             				{{csrf_field()}}
 			            	<div class="card-header">Cart</div>
@@ -72,6 +72,20 @@
 	            		</form>
            			 </div>
             	</div>
+            	<div class="col-md-5">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="card cd col-md-3">
+									<div class="card-header">
+										<a href="{{route('user.cartshow')}}"><img id="cart" src="{{asset('images')}}/admin/order.png"></a>
+										<p>Items:{{Cart::count()}}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
             </div>
         </div>
     </div>

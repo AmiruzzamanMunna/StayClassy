@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\AdminRequest;
 use App\Admin;
+use App\OrderShow;
 use App\User;
 
 class AdminController extends Controller
 {
-    public function index($value='')
+    public function index()
     {
-    	return view("Admin.admin");
+        $order= OrderShow::all();
+    	return view("Admin.admin")
+        ->with("order",$order);
     }
     public function adminsignup()
     {

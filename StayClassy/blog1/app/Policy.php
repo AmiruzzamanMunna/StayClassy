@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Policy extends Model
 {
-     protected $table = "tbl_policy";
-    public $timestamps = false;
+    protected $table = "tbl_policy";
+   	public $timestamps = false;
 }

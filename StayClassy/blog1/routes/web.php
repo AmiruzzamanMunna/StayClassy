@@ -33,7 +33,7 @@ Route::post('/details/{id}','UserController@cart')->name('user.cart');
 
 
 Route::get('/checkout/{id}','UserController@checkout')->name('user.checkout');
-Route::post('/checkout/{id}','UserController@varify1')->name('user.varify1');
+Route::post('/checkout/{id}','UserController@orderstore')->name('user.orderstore');
 
 Route::get('/voucher/{id}','UserController@voucher')->name('user.voucher');
 Route::get('/travelling','UserController@travelling')->name('user.travel');
@@ -42,7 +42,7 @@ Route::get('/gents','UserController@gents')->name('user.gents');
 
 Route::get('/ajax/addCart', 'AjaxController@addCart')->name('ajax.addCart');
 Route::get("/cartshow",'UserController@cartshow')->name('user.cartshow');
-Route::post("/cartshow",'UserController@orderstore')->name('user.orderstore');
+// Route::post("/cartshow",'UserController@orderstore')->name('user.orderstore');
 Route::get("/cartupdate/edit/{id}",'UserController@cartedit')->name('user.cartedit');
 Route::post("/cartupdate/edit/{id}",'UserController@cartupdate')->name('user.cartupdate');
 Route::get("/cartshow/remove/{id}",'UserController@cartremove')->name('user.cartremove');
@@ -68,7 +68,7 @@ Route::get('/productadd','ProductController@create')->name('product.create');
 Route::post('/productadd','ProductController@store')->name('product.store');
 
 Route::get('/order','OrderController@order')->name('order.order');
-Route::get('/order/details','OrderController@orderdetails')->name('order.orderdetails');
+Route::get('/order/details/{id}','OrderController@orderdetails')->name('order.orderdetails');
 
 Route::get('/stuffadd','StuffController@create')->name('stuff.create');
 Route::post('/stuffadd','StuffController@store')->name('stuff.store');

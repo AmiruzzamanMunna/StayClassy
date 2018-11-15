@@ -25,8 +25,8 @@ class CheckoutRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'mb1'=>'required',
-            'mb2'=>'required',
+            'mobile1'=>'required',
+            'mobile2'=>'required',
             'email'=>'required',
             'address'=>'required',
         ];

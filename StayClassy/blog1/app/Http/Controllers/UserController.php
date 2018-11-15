@@ -282,13 +282,24 @@ class UserController extends Controller
         ->with("policys", $policys)
         ->with("abouts", $abouts);
     }
-    public function varify1(Request $request,$id)
+    public function orderstore(CheckoutRequest $request,$id)
     {
        $user= User::all()
-        ->where('id',$id)
-        ->first();
-        return redirect()->route("user.voucher")
-        ->with('user',$user);
+        ->where('id',$id);
+        $cart=Carttbl::all();
+        foreach ($cart as $cart) {
+            $order = new Order();
+            $order->name=$request->name;
+            $order->mobile1=$request->mobile1;
+            $order->mobile2=$request->mobile2;
+            $order->address=$request->address;
+            $order->email=$request->email;
+            $order->userid=$request->id;
+            $order->cart_id=$cart->id;
+            $order->status=0;
+            $order->save();
+        }
+        return back();
     }
 
     public function voucher(Request $request,$id)
@@ -315,6 +326,7 @@ class UserController extends Controller
         ->with("abouts", $abouts);
 
     }
+
     public function cart(Request $request,$id)
     {
         $Quantity=$request->Quantity;
@@ -390,18 +402,5 @@ class UserController extends Controller
         $cart->delete();
         return back();
     }
-    public function orderstore(Request $request)
-    {
-        $cart=Carttbl::all();
-        $order = new Order();
-        foreach ($cart as $cart) {
-            $order->userid=$cart->user_id;
-            $order->productid=$cart->product_id;
-            $order->productquantity=$cart->quantity;
-            $order->price=$cart->unit_price;
-            $order->invoice_id=1;
-            $order->save();
-        }
-        return back();
-    }
+    
 }

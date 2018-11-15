@@ -4,10 +4,10 @@ $(document).ready(function() {
 			name:{
 				required:true,
 			},
-			mb1:{
+			mobile1:{
 				required:true,
 			},
-			mb2:{
+			mobile2:{
 				required:true,
 			},
 			address:{

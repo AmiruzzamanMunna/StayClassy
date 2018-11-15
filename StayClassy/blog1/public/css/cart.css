@@ -1,8 +1,21 @@
-.card{
+#card{
 	margin-top: 80px;
 	font-size: 50px;
 }
 a:hover{
 	text-decoration: none;
 	color: white;
+}
+.cd{
+	position: fixed;
+    top: 520px;
+    right: 15px;
+    width: 120px;
+    bottom: 13px;
+    z-index: 999;
+
+}
+#cart{
+	height: 50px;
+	width: 50px;
 }

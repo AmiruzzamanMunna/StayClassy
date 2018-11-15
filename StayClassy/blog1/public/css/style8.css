@@ -16,3 +16,16 @@
 .cl{
 	margin-top: 80px;
 }
+.cd{
+	position: fixed;
+    top: 520px;
+    right: 15px;
+    width: 120px;
+    bottom: 13px;
+    z-index: 999;
+
+}
+#cart{
+	height: 50px;
+	width: 50px;
+}
