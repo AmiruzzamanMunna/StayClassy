@@ -45,6 +45,9 @@
 									<div class="col-md-12">
 										<form>
 											{{csrf_field()}}
+											<?php
+												$result=0;
+											?>
 											<div class="card crd">
 													<h4 class="m-auto">{{$product->product_name}}</h4>
 												<div class="card-body">
@@ -70,11 +73,15 @@
 													</div>
 													<div class="form-group row">
 														<label class="col-md-6">Discount:</label>
-														<label class="col-md-6">{{$product->discount}}%</label>
+														<label class="col-md-6">{{$product->discount}}</label>
 													</div>
 													<div class="form-group row">
 														<label class="col-md-6">Price:</label>
-														<label class="col-md-6"><del>1100</del>{{$product->product_price}}tk</label>
+														<?php
+														
+															$result=$product->product_price-($product->discount*$product->product_price/100);
+														?>
+														<label class="col-md-6"><del>{{$product->product_price}}</del>{{$result}}tk</label>
 													</div>
 													<div class="form-group row">
 														<label class="col-md-6">Quantity:</label>

@@ -228,6 +228,29 @@ class UserController extends Controller
             ->with("policys", $policys)
             ->with("abouts", $abouts);
     }
+     public function duffel($name)
+    {
+        $products = DB::table('view_product')
+        ->where('category_name',$name)->paginate(5);
+        $socials = Social::all();
+        $qualitys = Quality::all();
+        $returns = Returnpolicy::all();
+        $shippings = Shipping::all();
+        $customers = Customerservice::all();
+        $contacts = Contact::all();
+        $policys = Policy::all();
+        $abouts = About::all();
+        return view("User.category")
+            ->with('products', $products)
+            ->with("socials", $socials)
+            ->with("qualitys", $qualitys)
+            ->with("returns", $returns)
+            ->with("shippings", $shippings)
+            ->with("customers", $customers)
+            ->with("contacts", $contacts)
+            ->with("policys", $policys)
+            ->with("abouts", $abouts);
+    }
     public function details(Request $request, $id)
     {
         $product = DB::table("view_product")
@@ -296,17 +319,19 @@ class UserController extends Controller
             $order->email=$request->email;
             $order->userid=$request->id;
             $order->cart_id=$cart->id;
+            $order->totalprice=0;
             $order->status=0;
             $order->save();
         }
         return back();
     }
 
-    public function voucher(Request $request,$id)
+    public function invoice(Request $request,$id)
     {
-        $user= Product::all()
-        ->where('id',$id)
+        $user= DB::table("view_order_final")
+        ->where('userid',$id)
         ->first();
+        dd($user);
         $socials = Social::all();
         $qualitys = Quality::all();
         $returns = Returnpolicy::all();
@@ -315,8 +340,8 @@ class UserController extends Controller
         $contacts = Contact::all();
         $policys = Policy::all();
         $abouts = About::all();
-        return view("User.voucher")
-        ->with('product',$product)
+        return view("User.invoice")
+        ->with("user",$$user)
         ->with("qualitys", $qualitys)
         ->with("returns", $returns)
         ->with("shippings", $shippings)

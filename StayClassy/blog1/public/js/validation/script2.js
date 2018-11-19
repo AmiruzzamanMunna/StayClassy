@@ -56,11 +56,6 @@ $(document).ready(function() {
 				required:true,
 				// price:true
 			},
-			discount:{
-				required:true,
-				minlength:1
-				
-			},
 			quantity:{
 				required:true,
 				// quantity:true

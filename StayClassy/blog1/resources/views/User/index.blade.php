@@ -44,7 +44,7 @@
 			@forelse($products as $product)
 			<div class="col-md-3 col-lg-2 col-sm-4 col-xl-2">
 				<img src="{{asset('images')}}/{{$product->image1}}" class="rounded-circle rcc" alt="logo">
-				<p>{{$product->discount}}%</p>
+				<p>{{$product->discount}}</p>
 				<button type="button" class="btn btn-danger"><a href="{{route('user.details', [$product->id])}}">Buy Now</a></button>
 				<p><b id="b">{{$product->product_name}}</b></p>
 				<p>Price:{{$product->product_price}}</p>
@@ -95,7 +95,7 @@
 			@forelse($productspopular  as $product)
 			<div class="col-md-3 col-lg-2 col-sm-4 col-xl-2">
 				<img src="{{asset('images')}}/{{$product->image1}}" class="rounded-circle rcc" alt="logo">
-				<p>{{$product->discount}}%</p>
+				<p>{{$product->discount}}</p>
 				<button type="button" class="btn btn-danger"><a href="{{route('user.details', [$product->id])}}">Buy Now</a></button>
 				<p><b id="b">{{$product->product_name}}</b></p>
 				<p>Price:{{$product->product_price}}</p>
@@ -112,7 +112,7 @@
 					@forelse($productsnew as $product)
 					<div class="col-md-3 col-lg-2 col-sm-4 col-xl-2">
 						<img src="{{asset('images')}}/{{$product->image1}}" class="rounded-circle rcc" alt="logo">
-						<p>{{$product->discount}}%</p>
+						<p>{{$product->discount}}</p>
 						<button type="button" class="btn btn-danger"><a href="{{route('user.details', [$product->id])}}">Buy Now</a></button>
 						<p><b id="b">{{$product->product_name}}</b></p>
 						<p>Price:{{$product->product_price}}</p>

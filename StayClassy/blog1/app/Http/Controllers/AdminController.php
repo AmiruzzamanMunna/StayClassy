@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\AdminRequest;
 use App\Admin;
@@ -14,9 +15,9 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $order= OrderShow::all();
+        $orders = OrderShow::paginate(5);
     	return view("Admin.admin")
-        ->with("order",$order);
+        ->with("orders",$orders);
     }
     public function adminsignup()
     {

@@ -30,7 +30,7 @@
 						<a href="{{route('user.category','Travelling')}}" class="nav-link" id="nvlk">Travelling</a>
 					</li>
 					<li class="nav-item">
-						<a href="" class="nav-link" id="nvlk" >Duffel</a>
+						<a href="{{route('user.duffel','Duffel')}}" class="nav-link" id="nvlk" >Duffel</a>
 					</li>
 					<li class="nav-item">
 						<a href="{{route('user.category','Office')}}" class="nav-link" id="nvlk">Office</a>

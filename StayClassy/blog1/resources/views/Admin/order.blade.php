@@ -8,52 +8,47 @@
 @section('script')
 @endsection
 @section('container')
-	<div class="row m-auto">
+	<div class="col-md-8">
 		<div class="card">
-			<div class="card-header"><h2>Latest Order</h2></div>
+			<div class="card-header"><h2>All Order</h2></div>
 			<div class="card-body">
 				<table class="table table-bordered table-md table-striped">
-				<tr>
-					<th>Image</th>
-					<th>Product Name</th>
-					<th>Product Code</th>
-					<th>Customer Name</th>
-					<th>Mobile 1</th>
-					<th>Order Date</th>
-					<th>Status</th>
-					<th>Details</th>
-				</tr>
-				<tr>
-					<td><img src="images/bag/bag-1.jpg" class="ig"></td>
-					<td>BackPack Fasttrack</td>
-					<td>Regular</td>
-					<td>Munna</td>
-					<td>090909090</td>
-					<td>2018-8-8</td>
-					<td>Pending</td>
-					<td><a href="{{route('order.orderdetails')}}">Show</a></td>
-				</tr>
-				<tr>
-					<td><img src="images/bag/bag-1.jpg" class="ig"></td>
-					<td>BackPack Fasttrack</td>
-					<td>Regular</td>
-					<td>Munna</td>
-					<td>090909090</td>
-					<td>2018-8-8</td>
-					<td>Pending</td>
-					<td><a href="{{route('order.orderdetails')}}">Show</a></td>
-				</tr>
-				<tr>
-					<td><img src="images/bag/bag-1.jpg" class="ig"></td>
-					<td>BackPack Fasttrack</td>
-					<td>Regular</td>
-					<td>Munna</td>
-					<td>090909090</td>
-					<td>2018-8-8</td>
-					<td>Active</td>
-					<td><a href="{{route('order.orderdetails')}}">Show</a></td>
-				</tr>
-			</table>
+					<tr>
+						<th>Image</th>
+						<th>Product Name</th>
+						<th>Product Code</th>
+						<th>Customer Name</th>
+						<th>Mobile 1</th>
+						<th>Address</th>
+						<th>Order Date</th>
+						<th>Status</th>
+						<th>Details</th>
+					</tr>
+					@foreach($orders as $order)
+					<tr>
+						<td><img src="{{asset('images')}}/{{$order->image1}}" class="ig"></td>
+						<td>{{$order->product_name}}</td>
+						<td>{{$order->code}}</td>
+						<td>{{$order->name}}</td>
+						<td>{{$order->mobile1}}</td>
+						<td>{{$order->address}}</td>
+						<td>{{$order->date}}</td>
+						<td>{{$order->status}}</td>
+						<td><a href="{{route('order.orderdetails',[$order->id])}}">Show</a></td>
+					</tr>
+					@endforeach
+				</table>
+			</div>
+			<div class="card-footer">
+				<div class="row">
+					<dir class="col-md-12">
+						<div class="row">
+							<div class="col-md-2 m-auto">
+								{{$orders->links()}}
+							</div>
+						</div>
+					</dir>
+				</div>
 			</div>
 		</div>
 	</div>

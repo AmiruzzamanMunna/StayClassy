@@ -24,6 +24,7 @@ Route::get('/category/{name}','UserController@category')->name('user.category');
 Route::get('/type/{name}','UserController@type')->name('user.type');
 Route::get('/newarrival','UserController@newarrival')->name('user.newarrival');
 Route::get('/Offers','UserController@offers')->name('user.offers');
+Route::get('/Duffel/{name}','UserController@duffel')->name('user.duffel');
 
 Route::get('/details/{id}','UserController@details')->name('user.details');
 Route::post('/details/{id}','UserController@cart')->name('user.cart');
@@ -35,7 +36,7 @@ Route::post('/details/{id}','UserController@cart')->name('user.cart');
 Route::get('/checkout/{id}','UserController@checkout')->name('user.checkout');
 Route::post('/checkout/{id}','UserController@orderstore')->name('user.orderstore');
 
-Route::get('/voucher/{id}','UserController@voucher')->name('user.voucher');
+Route::get('/invoice/{id}','UserController@invoice')->name('user.invoice');
 Route::get('/travelling','UserController@travelling')->name('user.travel');
 Route::get('/office','UserController@office')->name('user.office');
 Route::get('/gents','UserController@gents')->name('user.gents');
