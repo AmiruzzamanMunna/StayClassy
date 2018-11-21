@@ -20,6 +20,7 @@ class AjaxController extends Controller
 		}else{
 			$cart->unit_price = $product->product_price;
 		}
+		$cart->total_price = $cart->unit_price * $cart->quantity;
 		if ($cart->save() > 0) {
 			return 1;
 		}else{

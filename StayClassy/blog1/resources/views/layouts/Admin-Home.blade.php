@@ -28,7 +28,7 @@
 					<h1 class="h m-auto">Admin Panel</h1>
 					<div class="col-md-1">
 						<ul class="navbar-nav">
-							@if(Session::has('loggedUser'))
+							@if(Session::has('loggedAdmin'))
 							<li class="nav-item">
 								<a href="#" class="nav-link dropdown" data-toggle="dropdown">Account</a>
 								<div class="dropdown-menu">
@@ -67,11 +67,11 @@
 								<li class="nav-item" id="navitem">
 									<a class="nav-link collapse" data-toggle="collapse" data-target="#demo0" href="#">Order <i id="cc" class="fa fa-caret-down"></i></a>
 									<div class="collapse" id="demo0">
-										<a href="#" class="nav-link">Pending</a>
-										<a href="#" class="nav-link">Delivered</a>
-										<a href="#" class="nav-link">Returned</a>
-										<a href="#" class="nav-link">Cancelled</a>
-										<a href="{{route('order.order')}}" class="nav-link">All</a>
+										<a href="{{route('order.pending')}}" class="nav-link">Pending</a>
+										<a href="{{route('order.delivered')}}" class="nav-link">Delivered</a>
+										<a href="{{route('order.returned')}}" class="nav-link">Returned</a>
+										<a href="{{route('order.canceled')}}" class="nav-link">Cancelled</a>
+										<a href="{{route('order.index')}}" class="nav-link">All</a>
 									</div>
 								</li>
 								<li class="nav-item" id="navitem">

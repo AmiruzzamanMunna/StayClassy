@@ -59,7 +59,7 @@
 						<div class="card cd col-md-3 ml-auto">
 							<div class="card-header">
 								<a href="{{route('user.cartshow')}}"><img id="cart" src="{{asset('images')}}/admin/order.png"></a>
-								<p>Items:{{Cart::count()}}</p>		
+								<p>Items:{{$cartItem}}</p>	
 							</div>
 						</div>
 					</div>

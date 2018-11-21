@@ -22,19 +22,12 @@ use App\About;
 use App\User;
 use App\Order;
 use App\Carttbl;
+use App\Invoice;
 use Cart;
 
 class UserController extends Controller
 {
-	public function layout2($value='')
-	{
-		return view("layouts.Product-Details");
-	}
-    public function layout1($value='')
-    {
-    	return view("layouts.User-Home");
-    }
-     public function userlogin()
+    public function userlogin()
     {
         $products = Product::all();
         $productsnew = Product::where('newarrival',1)->get();
@@ -134,10 +127,16 @@ class UserController extends Controller
         return back();
     }
     
-    public function category($name)
+    public function category(Request $request, $name)
     {
+        if ($request->session()->get('loggedUser')) {
+            $cartItem = Carttbl::where('user_id', $request->session()->get('loggedUser'))
+                ->sum('quantity');
+        }else{
+            $cartItem = 0;
+        }
         $products = DB::table('view_product')
-        ->where('category_name',$name)->paginate(5);
+            ->where('category_name',$name)->paginate(5);
         $socials = Social::all();
         $qualitys = Quality::all();
         $returns = Returnpolicy::all();
@@ -147,6 +146,7 @@ class UserController extends Controller
         $policys = Policy::all();
         $abouts = About::all();
         return view("User.category")
+            ->with('cartItem', $cartItem)
             ->with('products', $products)
             ->with("socials", $socials)
             ->with("qualitys", $qualitys)
@@ -157,11 +157,16 @@ class UserController extends Controller
             ->with("policys", $policys)
             ->with("abouts", $abouts);
     }
-    public function type($name)
+    public function type(Request $request, $name)
     {
-
+        if ($request->session()->get('loggedUser')) {
+            $cartItem = Carttbl::where('user_id', $request->session()->get('loggedUser'))
+                ->sum('quantity');
+        }else{
+            $cartItem = 0;
+        }
         $products = DB::table('view_product')
-        ->where('type_name',$name)->paginate(5);
+            ->where('type_name',$name)->paginate(5);
         $socials = Social::all();
         $qualitys = Quality::all();
         $returns = Returnpolicy::all();
@@ -172,6 +177,7 @@ class UserController extends Controller
         $abouts = About::all();
         return view("User.category")
             ->with('products', $products)
+            ->with('cartItem', $cartItem)
             ->with("socials", $socials)
             ->with("qualitys", $qualitys)
             ->with("returns", $returns)
@@ -182,8 +188,14 @@ class UserController extends Controller
             ->with("abouts", $abouts);
         return view("User.travelling");
     }
-    public function newarrival()
+    public function newarrival(Request $request)
     {
+        if ($request->session()->get('loggedUser')) {
+            $cartItem = Carttbl::where('user_id', $request->session()->get('loggedUser'))
+                ->sum('quantity');
+        }else{
+            $cartItem = 0;
+        }
         $products = Product::where('newarrival',1)->paginate(5);
         $socials = Social::all();
         $qualitys = Quality::all();
@@ -194,6 +206,7 @@ class UserController extends Controller
         $policys = Policy::all();
         $abouts = About::all();
         return view("User.category")
+            ->with('cartItem', $cartItem)
             ->with('products', $products)
             ->with('products', $products)
             ->with("socials", $socials)
@@ -206,8 +219,14 @@ class UserController extends Controller
             ->with("abouts", $abouts);
     }
    
-    public function offers()
+    public function offers(Request $request)
     {
+        if ($request->session()->get('loggedUser')) {
+            $cartItem = Carttbl::where('user_id', $request->session()->get('loggedUser'))
+                ->sum('quantity');
+        }else{
+            $cartItem = 0;
+        }
     	$products = Product::where('discount','>',0)->paginate(5);
         $socials = Social::all();
         $qualitys = Quality::all();
@@ -218,6 +237,7 @@ class UserController extends Controller
         $policys = Policy::all();
         $abouts = About::all();
         return view("User.category")
+            ->with('cartItem', $cartItem)
             ->with('products', $products)
             ->with("socials", $socials)
             ->with("qualitys", $qualitys)
@@ -228,8 +248,14 @@ class UserController extends Controller
             ->with("policys", $policys)
             ->with("abouts", $abouts);
     }
-     public function duffel($name)
+     public function duffel(Request $request,$name)
     {
+        if ($request->session()->get('loggedUser')) {
+            $cartItem = Carttbl::where('user_id', $request->session()->get('loggedUser'))
+                ->sum('quantity');
+        }else{
+            $cartItem = 0;
+        }
         $products = DB::table('view_product')
         ->where('category_name',$name)->paginate(5);
         $socials = Social::all();
@@ -241,6 +267,7 @@ class UserController extends Controller
         $policys = Policy::all();
         $abouts = About::all();
         return view("User.category")
+            ->with('cartItem', $cartItem)
             ->with('products', $products)
             ->with("socials", $socials)
             ->with("qualitys", $qualitys)
@@ -253,6 +280,12 @@ class UserController extends Controller
     }
     public function details(Request $request, $id)
     {
+         if ($request->session()->get('loggedUser')) {
+            $cartItem = Carttbl::where('user_id', $request->session()->get('loggedUser'))
+                ->sum('quantity');
+        }else{
+            $cartItem = 0;
+        }
         $product = DB::table("view_product")
             ->where('id', $id)
             ->first();
@@ -267,6 +300,7 @@ class UserController extends Controller
         $abouts = About::all();
         $specifications = json_decode($product->specification);
     	return view("User.details")
+            ->with("cartItem", $cartItem)
             ->with("user", $user)
             ->with("product", $product)
             ->with('specifications', $specifications)
@@ -282,10 +316,9 @@ class UserController extends Controller
         
     }
     
-    public function checkout(Request $request,$id)
+    public function checkout(Request $request)
     {
-        $user = User::all()
-        ->where('id',$id);
+        $user = User::all();
         $socials = Social::all();
         $qualitys = Quality::all();
         $returns = Returnpolicy::all();
@@ -305,33 +338,53 @@ class UserController extends Controller
         ->with("policys", $policys)
         ->with("abouts", $abouts);
     }
-    public function orderstore(CheckoutRequest $request,$id)
+    public function orderstore(CheckoutRequest $request)
     {
-       $user= User::all()
-        ->where('id',$id);
-        $cart=Carttbl::all();
-        foreach ($cart as $cart) {
-            $order = new Order();
-            $order->name=$request->name;
-            $order->mobile1=$request->mobile1;
-            $order->mobile2=$request->mobile2;
-            $order->address=$request->address;
-            $order->email=$request->email;
-            $order->userid=$request->id;
-            $order->cart_id=$cart->id;
-            $order->totalprice=0;
-            $order->status=0;
-            $order->save();
+        $userid = $request->session()->get('loggedUser');
+        $carts = Carttbl::where('user_id', $userid)
+            ->get();
+        $invoice = new Invoice();
+        $invoice->user_id = $userid;
+        $invoice->order_date = date('Y-m-d');
+        $invoice->status = 1;
+        $totalprice = 0;
+        foreach ($carts as $cart) {
+            $totalprice += $cart->total_price;
         }
-        return back();
+        $invoice->totalprice = $totalprice;
+        if ($invoice->save() > 0) {
+            foreach ($carts as $cart) {
+                $order = new Order();
+                $order->product_id=$cart->product_id;
+                $order->quantity=$cart->quantity;
+                $order->name=$request->name;
+                $order->mobile1=$request->mobile1;
+                if ($request->mobile2) {
+                    $order->mobile2=$request->mobile2;
+                }
+                $order->address=$request->address;
+                $order->email=$request->email;
+                $order->userid=$request->session()->get('loggedUser');
+                $order->cart_id=$cart->id;
+                $order->totalprice=$cart->total_price;
+                $order->invoice_id = $invoice->id;
+                $product = Product::find($cart->product_id);
+                $product->product_quantity = $product->product_quantity - $cart->quantity;
+                $product->save();
+                if ($order->save() > 0) {
+                    $cart = Carttbl::where('user_id', $userid)
+                        ->delete();
+                }
+            }
+        }
+        return redirect()->route('user.invoice', [$invoice->id]);
     }
 
     public function invoice(Request $request,$id)
     {
-        $user= DB::table("view_order_final")
-        ->where('userid',$id)
-        ->first();
-        dd($user);
+        $users = DB::table('view_order')
+            ->where('invoice_id', $id)
+            ->get();
         $socials = Social::all();
         $qualitys = Quality::all();
         $returns = Returnpolicy::all();
@@ -341,7 +394,7 @@ class UserController extends Controller
         $policys = Policy::all();
         $abouts = About::all();
         return view("User.invoice")
-        ->with("user",$$user)
+        ->with("users",$users)
         ->with("qualitys", $qualitys)
         ->with("returns", $returns)
         ->with("shippings", $shippings)
@@ -352,26 +405,16 @@ class UserController extends Controller
 
     }
 
-    public function cart(Request $request,$id)
+    public function cartshow(Request $request)
     {
-        $Quantity=$request->Quantity;
-        $product=Product::where('id',$id)
-        ->first();
-        Cart::add([
-            'id'=>$id,
-            'name'=>$product->product_name,
-            'qty'=>$request->Quantity,
-            'price'=>$product->product_price,
-            
-        ]);
-        return back();
-       
-    }
-    public function cartshow()
-    {
-        $user = User::all();
-        $carts=Carttbl::all();
-        $product=Product::all();
+         if ($request->session()->get('loggedUser')) {
+            $cartItem = Carttbl::where('user_id', $request->session()->get('loggedUser'))
+                ->sum('quantity');
+        }else{
+            $cartItem = 0;
+        }
+        $carts = Carttbl::where('user_id', $request->session()->get('loggedUser'))
+            ->get();
         $socials = Social::all();
         $qualitys = Quality::all();
         $returns = Returnpolicy::all();
@@ -381,18 +424,17 @@ class UserController extends Controller
         $policys = Policy::all();
         $abouts = About::all();
         return view("User.cart")
-        ->with('user',$user)
-        ->with('product',$product)
-        ->with('carts',$carts)
-        ->with("qualitys", $qualitys)
-        ->with("returns", $returns)
-        ->with("shippings", $shippings)
-        ->with("customers", $customers)
-        ->with("contacts", $contacts)
-        ->with("policys", $policys)
-        ->with("abouts", $abouts);
+            ->with('cartItem',$cartItem)
+            ->with('carts',$carts)
+            ->with("qualitys", $qualitys)
+            ->with("returns", $returns)
+            ->with("shippings", $shippings)
+            ->with("customers", $customers)
+            ->with("contacts", $contacts)
+            ->with("policys", $policys)
+            ->with("abouts", $abouts);
     }
-    public function cartedit($id)
+    public function cartedit(Request $request, $id)
     {
         $cart=Carttbl::all()
         ->where('id',$id);

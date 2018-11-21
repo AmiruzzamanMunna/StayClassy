@@ -81,6 +81,7 @@
 				</ul>
 			</div>
 		</nav>
+		
 	</div>
 	@yield('container')
 	<div class="container-fluid" id="footer">

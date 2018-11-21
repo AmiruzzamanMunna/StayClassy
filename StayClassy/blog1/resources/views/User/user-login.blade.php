@@ -32,6 +32,9 @@
 										<input type="password" class="form-control" name="password">
 									</div>
 								</div>
+								<div class="form-group row">
+									<label class="col-md-8"><a href="">Forgot Password?</a></label>
+								</div>
 								@if($errors->any())
 									<ul>
 										@foreach($errors->all() as $error)

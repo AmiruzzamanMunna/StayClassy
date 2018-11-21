@@ -28,7 +28,7 @@
 													
 													<div class="form-group row">
 														<label class="col-md-6">Quantity:</label>
-														<input type="text" name="Quantity" value="1">
+														<input type="text" name="Quantity" value="{{$cart->quantity}}">
 													</div>
 													<div class=" form-group row">
 														<div class="col-md-7 m-auto">

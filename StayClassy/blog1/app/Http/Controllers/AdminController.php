@@ -9,13 +9,14 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\AdminRequest;
 use App\Admin;
 use App\OrderShow;
+use App\Order;
 use App\User;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        $orders = OrderShow::paginate(5);
+        $orders = DB::table('view_invoice')->paginate(5);
     	return view("Admin.admin")
         ->with("orders",$orders);
     }
@@ -36,16 +37,16 @@ class AdminController extends Controller
         $request->session()->flash('message','Registered Successfully');
         return back();
     }
-    public function login($value='')
+    public function login(Request $request)
     {
     	return view("Admin.login");
     }
     public function varify(LoginRequest $request)
     {
          $admin =Admin::where('username',$request->username)
-        ->where('password',$request->password)->first();
+            ->where('password',$request->password)->first();
         if ($admin) {
-            $request->session()->put('loggedUser', $admin->id);
+            $request->session()->put('loggedAdmin', $admin->id);
             $request->session()->flash('message','Login Successfull');
             return redirect()->route('admin.index');
         }

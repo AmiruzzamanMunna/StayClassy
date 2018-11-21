@@ -62,10 +62,7 @@
 	            					<button type="button" class="btn btn-default"><a href="{{route('user.index')}}">Go Shopping</a></button>
 	            				</div>
 	            				<div class="col-md-2 ml-auto">
-	            					@forelse($user as $user)
-	            					<button type="submit" class="btn btn-basic"><a href="{{route('user.checkout',[$user->id])}}">Order</a></button>
-	            					@empty
-	            					@endforelse
+	            					<button type="submit" class="btn btn-basic"><a href="{{route('user.checkout')}}">Order</a></button>
 	            				</div>
 	            			</div>
 	            			
@@ -79,7 +76,7 @@
 								<div class="card cd col-md-3">
 									<div class="card-header">
 										<a href="{{route('user.cartshow')}}"><img id="cart" src="{{asset('images')}}/admin/order.png"></a>
-										<p>Items:{{Cart::count()}}</p>
+										<p>Items:{{$cartItem}}</p>
 									</div>
 								</div>
 							</div>

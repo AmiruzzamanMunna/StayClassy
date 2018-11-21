@@ -22,9 +22,10 @@
 							<th>Discount %</th>
 							<th>Quantity</th>
 						</tr>
+						@forelse($products as $product)
 						<tr>
-							<td><img src="images/bag-1.jpg" class="ig"></td>
-							<td>BackPack Fasttrack</td>
+							<td><img src="{{asset('images')}}/{{$product->image1}}" class="ig"></td>
+							<td><a href="#">{{$product->product_name}}</a></td>
 							<td>back1</td>
 							<td>Regular</td>
 							<td>Gents</td>
@@ -33,28 +34,8 @@
 							<td>10%</td>
 							<td>20</td>
 						</tr>
-						<tr>
-							<td><img src="images/bag-1.jpg" class="ig"></td>
-							<td>BackPack Fasttrack</td>
-							<td>back1</td>
-							<td>Regular</td>
-							<td>Gents</td>
-							<td>3000</td>
-							<td>3500</td>
-							<td>10%</td>
-							<td>20</td>
-						</tr>
-						<tr>
-							<td><img src="images/bag-1.jpg" class="ig"></td>
-							<td>BackPack Fasttrack</td>
-							<td>back1</td>
-							<td>Regular</td>
-							<td>Gents</td>
-							<td>3000</td>
-							<td>3500</td>
-							<td>10%</td>
-							<td>20</td>
-						</tr>
+						@empty
+						@endforelse
 					</table>
 				</div>
 			</div>
