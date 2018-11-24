@@ -16,7 +16,9 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $orders = DB::table('view_invoice')->paginate(5);
+        $orders = DB::table('view_invoice')
+        ->orderby('invoice_id','desc')
+        ->paginate(5);
     	return view("Admin.admin")
         ->with("orders",$orders);
     }

@@ -2,6 +2,9 @@
 @section('title')
 	Product
 @endsection
+@section('script')
+	<script src="{{asset('js')}}/filter.js"></script>
+@endsection
 @section('container')
 	<div class="col-md-7"><br>
 		<div class="row">
@@ -59,37 +62,19 @@
 					<h3>Categories</h3>
 				</div>
 				<div class="card-body">
-					<form action="" method="post">
+					<form action="" method="get">
 						<div class="form-group row">
 							<label>
 								<input type="checkbox" name="new">Select All
 							</label>
 						</div>
+						@foreach($categories as $category)
 						<div class="form-group row">
-							<label>
-								<input type="checkbox" name="new1">Travelling
+							<label class="cat">
+								<input type="checkbox" class="categories" value="{{$category->id}}" >{{$category->name}}
 							</label>
 						</div>
-						<div class="form-group row">
-							<label>
-								<input type="checkbox" name="new2">Duffel
-							</label>
-						</div>
-						<div class="form-group row">
-								<label>
-									<input type="checkbox" name="new3">Office
-								</label>
-						</div>
-						<div class="form-group row">
-							<label>
-								<input type="checkbox" name="new4">Regular
-							</label>
-						</div>
-						<div class="form-group row">
-							<label>
-								<input type="checkbox" name="new5">Other Bags
-							</label>
-						</div>
+						@endforeach
 					</form>
 				</div>
 			</div>
@@ -105,20 +90,13 @@
 							<input type="checkbox" name="new6">Select All
 						</label>
 					</div>
-					<div class="form-group row">
-						<label>
-							<input type="checkbox" name="new7">Gents
-						</label>
-					</div>
-					<div class="form-group row">
-						<label>
-							<input type="checkbox" name="new8">Ladis
-					</div>
-					<div class="form-group row">
-						<label>
-							<input type="checkbox" name="new9">SugarBox
-						</label>
-					</div>
+					@foreach($types as $type)
+						<div class="form-group type row">
+							<label class="typ">
+								<input type="checkbox" id="type" value="{{$type->id}}">{{$type->name}}
+							</label>
+						</div>
+					@endforeach
 				</div>
 			</div>
 		</div>

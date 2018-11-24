@@ -15,8 +15,12 @@ class ProductController extends Controller
 {
     public function index()
     {
+        $types=DB::table("tbl_type")->get();
+        $categories=DB::table('tbl_category')->get();
         $products = DB::table('view_product')->paginate(5);
     	return view("Admin.product")
+            ->with('types', $types)
+            ->with('categories', $categories)
             ->with('products', $products);
     }
     public function create()

@@ -12,8 +12,8 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $orders = DB::table('view_invoice')
-            ->paginate(5);
-    	// $orders =OrderShow::paginate(5);
+        ->orderBy('invoice_id','desc')
+        ->paginate(5);
     	return view("Admin.order")
     	->with('orders',$orders);
     }
