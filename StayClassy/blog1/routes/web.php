@@ -60,7 +60,7 @@ Route::group(['middleware' => ['adminSess']], function () {
 	Route::post('/admin/signup','AdminController@store')->name('admin.adminsignup');
 	Route::get('/admin/logout','AdminController@adminlogout')->name('admin.adminlogout');
 
-	Route::get('/index','AdminController@index')->name('admin.index');
+	Route::get('/admin-index','AdminController@index')->name('admin.index');
 	Route::get('/admin/layout','AdminController@layout');
 	Route::get('/admin/manage/user','AdminController@manageuser')->name('admin.manageuser');
 	Route::get('/admin/manage/user/remove/{id}','AdminController@destroy')->name('admin.destroy');
@@ -69,6 +69,10 @@ Route::group(['middleware' => ['adminSess']], function () {
 
 	Route::get('/productadd','ProductController@create')->name('product.create');
 	Route::post('/productadd','ProductController@store')->name('product.store');
+
+	Route::get('/productupdate/{id}','ProductController@productedit')->name('product.productedit');
+	Route::post('/productupdate/{id}','ProductController@productupdate')->name('product.updateproduct');
+	Route::get('/productdelete/{id}','ProductController@productdelete')->name('product.delete');
 
 	Route::get('/order','OrderController@index')->name('order.index');
 	Route::get('/order/pending','OrderController@pending')->name('order.pending');

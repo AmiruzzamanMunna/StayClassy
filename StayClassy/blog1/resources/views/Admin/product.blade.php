@@ -25,18 +25,29 @@
 						@forelse($products as $product)
 						<tr>
 							<td><img src="{{asset('images')}}/{{$product->image1}}" class="ig"></td>
-							<td><a href="#">{{$product->product_name}}</a></td>
-							<td>back1</td>
-							<td>Regular</td>
-							<td>Gents</td>
-							<td>3000</td>
-							<td>3500</td>
-							<td>10%</td>
-							<td>20</td>
+							<td><a href="{{route('product.productedit',[$product->id])}}">{{$product->product_name}}</a></td>
+							<td>{{$product->code}}</td>
+							<td>{{$product->category_name}}</td>
+							<td>{{$product->type_name}}</td>
+							<td>{{$product->buy_price}}</td>
+							<td>{{$product->product_price}}</td>
+							<td>{{$product->discount}}</td>
+							<td>{{$product->product_quantity}}</td>
 						</tr>
 						@empty
 						@endforelse
 					</table>
+				</div>
+				<div class="card-footer">
+					<div class="row">
+						<dir class="col-md-12">
+							<div class="row">
+								<div class="col-md-2 m-auto">
+									{{$products->links()}}
+								</div>
+							</div>
+						</dir>
+					</div>
 				</div>
 			</div>
 		</div>

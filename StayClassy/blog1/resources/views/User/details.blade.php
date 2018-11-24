@@ -18,7 +18,7 @@
 		}
 		function change2() {
 			var img=document.getElementById('td1');
-			img.src="{{asset('images')}}/{{$product->image1}}";
+			img.src="{{asset('images')}}/{{$product->image3}}";
 		}
 
 	</script>

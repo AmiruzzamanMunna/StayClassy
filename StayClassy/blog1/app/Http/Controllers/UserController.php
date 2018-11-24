@@ -72,8 +72,14 @@ class UserController extends Controller
         $request->session()->flush();
         return back();
     }
-    public function index()
+    public function index(Request $request)
     {
+         if ($request->session()->get('loggedUser')) {
+            $cartItem = Carttbl::where('user_id', $request->session()->get('loggedUser'))
+                ->sum('quantity');
+        }else{
+            $cartItem = 0;
+        }
         $products = Product::all();
         $user=User::all();
         $productsnew = Product::where('newarrival',1)->get();
@@ -88,6 +94,7 @@ class UserController extends Controller
         $policys = Policy::all();
         $abouts = About::all();
     	return view("User.index")
+            ->with('cartItem', $cartItem )
             ->with('user', $user)
             ->with('products', $products)
             ->with('cart', $cart)
