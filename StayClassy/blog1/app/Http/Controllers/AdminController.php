@@ -14,13 +14,35 @@ use App\User;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $orders = DB::table('view_invoice')
         ->orderby('invoice_id','desc')
         ->paginate(5);
+        $totals=DB::table("tbl_invoice")->get();  
+        $current_order=0;
+        foreach($totals as $total){
+            $current_order++;
+        }
+        $delivers=DB::table('tbl_invoice')
+        ->where('status',2)->get();
+        $current_deliver=0;
+        foreach ($delivers as $deliver) {
+            $current_deliver++;
+        }
+        $returns=DB::table('tbl_invoice')
+        ->where('status',3)
+        ->get();
+        $current_return=0;
+        foreach ($returns as $return) {
+            $current_return++;
+        }
     	return view("Admin.admin")
-        ->with("orders",$orders);
+        ->with("orders",$orders)
+        ->with("current_order",$current_order)
+        ->with("current_deliver",$current_deliver)
+        ->with("current_return",$current_return)
+        ->with("total",$total);
     }
     public function adminsignup()
     {

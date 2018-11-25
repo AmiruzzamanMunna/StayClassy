@@ -71,7 +71,7 @@
 						@foreach($categories as $category)
 						<div class="form-group row">
 							<label class="cat">
-								<input type="checkbox" class="categories" value="{{$category->id}}" >{{$category->name}}
+								<input type="checkbox" class="categories" value="{{$category->id}}" name="categories" >{{$category->name}}
 							</label>
 						</div>
 						@endforeach
@@ -92,8 +92,8 @@
 					</div>
 					@foreach($types as $type)
 						<div class="form-group type row">
-							<label class="typ">
-								<input type="checkbox" id="type" value="{{$type->id}}">{{$type->name}}
+							<label class="">
+								<input type="checkbox" class="type" name="categories_types" value="{{$type->id}}">{{$type->name}}
 							</label>
 						</div>
 					@endforeach

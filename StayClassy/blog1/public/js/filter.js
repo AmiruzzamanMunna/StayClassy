@@ -1,6 +1,6 @@
 $(document).ready(function() {
-	$(".cat").click(function() {
-		var x=$(".categories").val();
+	$(".categories").click(function() {
+		var x=$(this).val();
 		alert(x);
 		$.ajax({
 			url:'/product',
@@ -15,8 +15,8 @@ $(document).ready(function() {
 	})
 });
 $(document).ready(function() {
-	$(".typ").click(function() {
-		var y=$("#type").val();
+	$(".type").click(function() {
+		var y=$(this).val();
 		alert(y);
-	})
-})
+	});
+});

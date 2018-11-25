@@ -24,9 +24,7 @@
 			<h1 class="h m-auto">Admin Panel</h1>
 			<div class="col-md-1">
 				<ul class="navbar-nav">
-					<li class="nav-item">
-						<a href="{{route('admin.adminsignup')}}" class="nav-link">Registration</a>
-					</li>
+					
 				</ul>
 			</div>
 			<div class="col-md-1">

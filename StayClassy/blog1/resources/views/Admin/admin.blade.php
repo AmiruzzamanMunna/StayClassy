@@ -16,9 +16,10 @@
 										<div class="card-header">Current Order</div>
 										<div class="card-body">
 											<img src="images/admin/order1.png">
+											<div><h1>{{$current_order}}</h1></div>
 										</div>
 										<div class="card-footer">
-											<a href="{{route('order.pending')}}">Details....</a>
+											<a href="{{route('order.index')}}">Details....</a>
 										</div>
 									</div>
 								</div>
@@ -27,6 +28,7 @@
 										<div class="card-header">Total Order</div>
 										<div class="card-body">
 											<img id="cart1" src="images/admin/cart4.png">
+											<div><h1>{{$current_order}}</h1></div>
 										</div>
 										<div class="card-footer">
 											<a href="{{route('order.index')}}">Details....</a>
@@ -38,9 +40,10 @@
 										<div class="card-header">Total Delivered</div>
 										<div class="card-body">
 											<img src="images/admin/cart6.png">
+											<div><h1>{{$current_deliver}}</h1></div>
 										</div>
 										<div class="card-footer">
-											<a href="">Details....</a>
+											<a href="{{route('order.delivered')}}">Details....</a>
 										</div>
 									</div>
 								</div>
@@ -49,9 +52,10 @@
 										<div class="card-header">Total Returnded</div>
 										<div class="card-body">
 											<img src="images/admin/cart1.png">
+											<div><h1>{{$current_return}}</h1></div>
 										</div>
 										<div class="card-footer">
-											<a href="">Details....</a>
+											<a href="{{route('order.returned')}}">Details....</a>
 										</div>
 									</div>
 								</div>
