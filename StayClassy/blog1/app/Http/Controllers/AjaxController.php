@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Carttbl;
 use App\Product;
 
@@ -26,5 +27,67 @@ class AjaxController extends Controller
 		}else{
 			return 0;
 		}
+	}
+	public function catFilter(Request $request)
+	{
+		$products = DB::table('view_product')
+			->whereIn("category",$request->catList)
+			->get();
+		$data = "<tr>
+				<th>Image</th>
+				<th>Name</th>
+				<th>Code</th>
+				<th>Category</th>
+				<th>Type</th>
+				<th>Buy Price</th>
+				<th>Price</th>
+				<th>Discount %</th>
+				<th>Quantity</th>
+			</tr>";
+		foreach ($products as $product) {
+			$data =  $data."<tr>
+			<td><img src='images/$product->image1' class='ig'></td>
+			<td><a href='/productupdate/{$product->id}'>$product->product_name</a></td>
+			<td>$product->code</td>
+			<td>$product->category_name</td>
+			<td>$product->type_name</td>
+			<td>$product->buy_price</td>
+			<td>$product->product_price</td>
+			<td>$product->discount</td>
+			<td>$product->product_quantity</td>
+		</tr>";
+		}
+		return $data;
+	}
+	public function typeFilter(Request $request)
+	{
+		$products = DB::table('view_product')
+			->whereIn("type",$request->Type)
+			->get();
+		$data = "<tr>
+				<th>Image</th>
+				<th>Name</th>
+				<th>Code</th>
+				<th>Category</th>
+				<th>Type</th>
+				<th>Buy Price</th>
+				<th>Price</th>
+				<th>Discount %</th>
+				<th>Quantity</th>
+			</tr>";
+		foreach ($products as $product) {
+			$data =  $data."<tr>
+			<td><img src='images/$product->image1' class='ig'></td>
+			<td><a href='/productupdate/{$product->id}'>$product->product_name</a></td>
+			<td>$product->code</td>
+			<td>$product->category_name</td>
+			<td>$product->type_name</td>
+			<td>$product->buy_price</td>
+			<td>$product->product_price</td>
+			<td>$product->discount</td>
+			<td>$product->product_quantity</td>
+		</tr>";
+		}
+		return $data;
 	}
 }

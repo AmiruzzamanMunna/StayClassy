@@ -50,24 +50,26 @@
 							@endif
 						<div class="card-header"><h2>Admin Login</h2></div>
 						<div class="card-body">
-							<form action="" method="post" id="register">
+							<form action="" method="POST" id="Admin">
 								{{csrf_field()}}
 								<div class="form-group row">
 									<label class="col-md-3">User Name:</label>
 									<div class="col-md-6">
-										<input type="text" class="form-control" name="username">
+										<input type="text" class="form-control" name="Username">
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="col-md-3">Password:</label>
 									<div class="col-md-6">
-										<input type="password" class="form-control" name="password">
+										<input type="Password" class="form-control" name="Password">
 									</div>
 								</div>
 								@if($errors->any())
-									@foreach($errors->all() as $error)
-										{{$error}}
-									@endforeach
+									<ul>
+										@foreach($errors->all() as $error)
+											<li>{{$error}}</li>
+										@endforeach
+									</ul>
 								@endif
 								<div class="row">
 									<div class="col-md-8">

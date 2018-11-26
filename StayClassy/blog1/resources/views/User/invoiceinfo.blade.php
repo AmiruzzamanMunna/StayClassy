@@ -1,6 +1,6 @@
-@extends('layouts.Admin-Home')
+@extends('layouts.User-Home')
 @section('title')
-	Order
+	User
 @endsection
 @section('css')
 	<link rel="stylesheet" type="text/css" href="{{asset('css')}}/order.css">
@@ -8,7 +8,7 @@
 @section('script')
 @endsection
 @section('container')
-	<div class="col-md-8">
+	<div class="col-md-8 m-auto">
 		<div class="card">
 			<div class="card-header">
 				<h2>Customer info</h2>
@@ -58,23 +58,6 @@
 				</table>
 			</div>
 			<div class="card-footer">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							@foreach($orders as $order)
-							<div class="col-md-4">
-								<button type="button" class="btn btn-danger"><a href="{{route('order.statuscanceled',[$invoice_id])}}">Canceled</a></button>
-							</div>
-							<div class="col-md-4">
-								<button type="button" class="btn btn-warning"><a href="{{route('order.statusreturned',[$invoice_id])}}">Returned</a></button>
-							</div>
-							<div class="col-md-4">
-								<button type="button" class="btn btn-success"><a href="{{route('order.statusdelivered',[$invoice_id])}}">Delivered</a></button>
-							</div>
-							@break
-							@endforeach
-						</div>
-					</div>
 				</div>
 				<div class="row">
 					<dir class="col-md-12">

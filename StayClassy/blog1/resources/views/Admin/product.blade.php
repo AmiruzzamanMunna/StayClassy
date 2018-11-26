@@ -13,7 +13,7 @@
 					<h2>All Products</h2>
 				</div>
 				<div class="card-body">
-					<table class="table table-bordered table-striped">
+					<table class="table table-bordered table-striped" id="product-list">
 						<tr>
 							<th>Image</th>
 							<th>Name</th>
@@ -65,13 +65,13 @@
 					<form action="" method="get">
 						<div class="form-group row">
 							<label>
-								<input type="checkbox" name="new">Select All
+								<input type="checkbox" class="categoriesall" name="new">Select All
 							</label>
 						</div>
 						@foreach($categories as $category)
 						<div class="form-group row">
 							<label class="cat">
-								<input type="checkbox" class="categories" value="{{$category->id}}" name="categories" >{{$category->name}}
+								<input type="checkbox" class="categories" value="{{$category->id}}" name="categories[]" >{{$category->name}}
 							</label>
 						</div>
 						@endforeach

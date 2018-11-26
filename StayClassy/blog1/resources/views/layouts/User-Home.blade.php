@@ -58,7 +58,7 @@
 					</li>
 					@if(Session::has('loggedUser'))
 					<li class="nav-item ">
-						<a href="#" class="nav-link" id="nvlk">Account</a>
+						<a href="{{route('user.account')}}" class="nav-link" id="nvlk">Profile</a>
 					</li>
 					<li class="nav-item">
 						<a href="{{route('user.logout')}}" class="nav-link" id="nvlk">Logout</a>

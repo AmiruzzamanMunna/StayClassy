@@ -18,7 +18,7 @@
 							@endif
 						<div class="card-header"><h2>User Login</h2></div>
 						<div class="card-body">
-							<form action="" method="post" id="register">
+							<form method="post" id="User">
 								{{csrf_field()}}
 								<div class="form-group row">
 									<label class="col-md-3">User Name:</label>

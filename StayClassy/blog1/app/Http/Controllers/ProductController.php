@@ -13,11 +13,18 @@ use App\Type;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $types=DB::table("tbl_type")->get();
         $categories=DB::table('tbl_category')->get();
         $products = DB::table('view_product')->paginate(5);
+        $category=$request->cat;
+        $type=$request->typ;
+        if($category!=""){
+            $data=DB::table('view_product')
+            ->where('category_name',$category)
+            ->get();
+        }
     	return view("Admin.product")
             ->with('types', $types)
             ->with('categories', $categories)

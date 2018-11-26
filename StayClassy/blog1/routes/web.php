@@ -18,7 +18,8 @@ Route::get('/','UserController@index')->name('user.index');
 
 Route::get('/sign','UserController@signup')->name('user.sign');
 Route::post('/sign','UserController@store')->name('user.store');
-Route::get('/logout','UserController@logout')->name('user.logout');
+Route::get('/account','UserController@account')->name('user.account');
+
 
 Route::get('/category/{name}','UserController@category')->name('user.category');
 Route::get('/type/{name}','UserController@type')->name('user.type');
@@ -28,15 +29,20 @@ Route::get('/Duffel/{name}','UserController@duffel')->name('user.duffel');
 
 Route::get('/details/{id}','UserController@details')->name('user.details');
 Route::post('/details/{id}','UserController@cart')->name('user.cart');
+Route::get('/invoiceinfo/{id}','UserController@invoiceInfo')->name('user.invoiceinfo');
 
 
 Route::group(['middleware' => ['userSess']], function () {
+
+	Route::get('/user/logout','UserController@logout')->name('user.logout');
+
     Route::get('/checkout','UserController@checkout')->name('user.checkout');
 	Route::post('/checkout','UserController@orderstore')->name('user.orderstore');
 
 	Route::get('/invoice/{id}','UserController@invoice')->name('user.invoice');
 	Route::get("/cartshow",'UserController@cartshow')->name('user.cartshow');
 	Route::get('/ajax/addCart', 'AjaxController@addCart')->name('ajax.addCart');
+	
 
 	// Route::post("/cartshow",'UserController@orderstore')->name('user.orderstore');
 	Route::get("/cartupdate/edit/{id}",'UserController@cartedit')->name('user.cartedit');
@@ -56,6 +62,7 @@ Route::get('/admin','AdminController@login')->name('admin.login');
 Route::post('/admin','AdminController@varify')->name('admin.varify');
 
 Route::group(['middleware' => ['adminSess']], function () {
+	
 	Route::get('/admin/signup','AdminController@adminsignup')->name('admin.adminsignup');
 	Route::post('/admin/signup','AdminController@store')->name('admin.adminsignup');
 	Route::get('/admin/logout','AdminController@adminlogout')->name('admin.adminlogout');
@@ -66,6 +73,8 @@ Route::group(['middleware' => ['adminSess']], function () {
 	Route::get('/admin/manage/user/remove/{id}','AdminController@destroy')->name('admin.destroy');
 
 	Route::get('/product','ProductController@index')->name('product.index');
+	Route::get('/ajax/catFilter', 'AjaxController@catFilter')->name('ajax.catFilter');
+	Route::get('/ajax/typeFilter', 'AjaxController@typeFilter')->name('ajax.typeFilter');
 
 	Route::get('/productadd','ProductController@create')->name('product.create');
 	Route::post('/productadd','ProductController@store')->name('product.store');

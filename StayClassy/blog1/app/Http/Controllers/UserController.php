@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\StuffRequest;
 use App\Http\Requests\CheckoutRequest;
@@ -67,14 +68,62 @@ class UserController extends Controller
             return back();
         }
     }
+    public function account(Request $request)
+    {
+        $users = DB::table('view_invoice')->where('id', $request->session()->get('loggedUser'))->get();
+        $socials = Social::all();
+        $qualitys = Quality::all();
+        $returns = Returnpolicy::all();
+        $shippings = Shipping::all();
+        $customers = Customerservice::all();
+        $contacts = Contact::all();
+        $policys = Policy::all();
+        $abouts = About::all();
+        return view("User.account")
+        ->with("users", $users)
+        ->with("socials", $socials)
+        ->with("qualitys", $qualitys)
+        ->with("returns", $returns)
+        ->with("shippings", $shippings)
+        ->with("customers", $customers)
+        ->with("contacts", $contacts)
+        ->with("policys", $policys)
+        ->with("abouts", $abouts);
+    }
+    public function invoiceInfo(Request $request,$id)
+    {
+        $orders = DB::table('view_order')
+            ->where('userid',$request->session()->get('loggedUser'))
+            ->where('invoice_id',$id)
+            ->paginate(10);
+        $socials = Social::all();
+        $qualitys = Quality::all();
+        $returns = Returnpolicy::all();
+        $shippings = Shipping::all();
+        $customers = Customerservice::all();
+        $contacts = Contact::all();
+        $policys = Policy::all();
+        $abouts = About::all();
+            return view("User.invoiceinfo")
+            ->with("orders",$orders)
+            ->with("socials", $socials)
+            ->with("qualitys", $qualitys)
+            ->with("returns", $returns)
+            ->with("shippings", $shippings)
+            ->with("customers", $customers)
+            ->with("contacts", $contacts)
+            ->with("policys", $policys)
+            ->with("abouts", $abouts);
+    }
     public function logout(Request $request)
     {
         $request->session()->flush();
-        return back();
+        $request->session()->regenerate();
+        return redirect()->guest(route('user.index'));
     }
     public function index(Request $request)
     {
-         if ($request->session()->get('loggedUser')) {
+        if ($request->session()->get('loggedUser')) {
             $cartItem = Carttbl::where('user_id', $request->session()->get('loggedUser'))
                 ->sum('quantity');
         }else{

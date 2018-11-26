@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\AdminRequest;
+use App\Http\Requests\AdminLoginRequest;
 use App\Admin;
 use App\OrderShow;
 use App\Order;
@@ -65,10 +66,10 @@ class AdminController extends Controller
     {
     	return view("Admin.login");
     }
-    public function varify(LoginRequest $request)
+    public function varify(AdminLoginRequest $request)
     {
-         $admin =Admin::where('username',$request->username)
-            ->where('password',$request->password)->first();
+         $admin =Admin::where('username',$request->Username)
+            ->where('password',$request->Password)->first();
         if ($admin) {
             $request->session()->put('loggedAdmin', $admin->id);
             $request->session()->flash('message','Login Successfull');
@@ -83,6 +84,7 @@ class AdminController extends Controller
     public function adminlogout(Request $request)
     {
         $request->session()->flush();
+        $request->session()->regenerate();
         return redirect()->route('admin.login');
     }
     public function layout($value='')
