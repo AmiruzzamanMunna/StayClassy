@@ -8,6 +8,7 @@
 @section('container')
 	<div class="container-fluid">
 		<div class="row">
+			@foreach($sliders as $slider)
 			<div id="demo" class="carousel slide carudemo" data-ride="carousel">
 				<ul class="carousel-indicators">
 					<li data-target="#demo" data-slide-to="0" class="active"></li>
@@ -16,13 +17,13 @@
 				</ul>
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<img class="caruimg" src="images/banner-1.jpg" alt="mm">
+						<img class="caruimg" src="{{asset('images')}}/{{$slider->image1}}" alt="mm">
 					</div>
 					<div class="carousel-item">
-						<img class="caruimg" src="images/banner-1.jpg" alt="mm1">
+						<img class="caruimg" src="{{asset('images')}}/{{$slider->image2}}" alt="mm1">
 					</div>
 					<div class="carousel-item">
-						<img class="caruimg" src="images/banner-1.jpg" alt="mm2">
+						<img class="caruimg" src="{{asset('images')}}/{{$slider->image3}}" alt="mm2">
 					</div>
 				</div>
 				<a href="#demo" class="carousel-control-prev" data-slide="prev">
@@ -34,6 +35,8 @@
 				<a href="#demo" class="carousel-control-next" data-slide="next">
 					<span class="carousel-control-next-icon"></span>
 				</a>
+				@break
+				@endforeach
 			</div>
 		</div>
 	</div>
@@ -78,12 +81,18 @@
 					</div>
 				</div>
 				<div class="col-md-4">
-					<img class="rcc2" src="images/banner-2.jpg">
+					@foreach($rights as $right)
+					<img class="rcc2" src="{{asset('images')}}/{{$right->image1}}">
+					@break
+					@endforeach
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-4">
-					<img class="rcc2" src="images/speech-2.jpg">
+					@foreach($lefts as $left)
+					<img class="rcc2" src="{{asset('images')}}/{{$left->image1}}">
+					@break
+					@endforeach
 				</div>
 			</div>
 		</div>

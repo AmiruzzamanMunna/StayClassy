@@ -24,6 +24,9 @@ use App\User;
 use App\Order;
 use App\Carttbl;
 use App\Invoice;
+use App\Image;
+use App\LeftImage;
+use App\RightImage;
 use Cart;
 
 class UserController extends Controller
@@ -82,6 +85,9 @@ class UserController extends Controller
         }else{
             $cartItem = 0;
         }
+        $sliders=Image::all();
+        $lefts=LeftImage::all();
+        $rights=RightImage::all();
         $products = Product::all();
         $user=User::all();
         $productsnew = Product::where('newarrival',1)->get();
@@ -90,6 +96,9 @@ class UserController extends Controller
         $socials = Social::all();
     	return view("User.index")
             ->with('cartItem', $cartItem )
+            ->with('sliders', $sliders)
+            ->with('lefts', $lefts)
+            ->with('rights', $rights)
             ->with('user', $user)
             ->with('products', $products)
             ->with('cart', $cart)

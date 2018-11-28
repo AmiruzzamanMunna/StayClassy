@@ -110,8 +110,19 @@ Route::group(['middleware' => ['adminSess']], function () {
 	Route::get('/stuff/remove/{id}','StuffController@destroy')->name('stuff.destroy');
 
 	Route::get('/slider','LayoutController@slider')->name('layout.slider');
+	Route::post('/slider','LayoutController@sliderstore')->name('layout.sliderstore');
+	Route::get('/slider/{id}','LayoutController@slideredit')->name('layout.slideredit');
+	Route::post('/slider/{id}','LayoutController@sliderupdate')->name('layout.sliderupdate');
+
 	Route::get('/left','LayoutController@left')->name('layout.left');
+	Route::post('/left','LayoutController@leftstore')->name('layout.left');
+	Route::get('/left/{id}','LayoutController@leftedit')->name('layout.leftedit');
+	Route::post('/left/{id}','LayoutController@leftupdate')->name('layout.leftupdate');
+
 	Route::get('/right','LayoutController@right')->name('layout.right');
+	Route::post('/right','LayoutController@rightstore')->name('layout.rightstore');
+	Route::get('/right/{id}','LayoutController@rightedit')->name('layout.rightedit');
+	Route::post('/right/{id}','LayoutController@rightupdate')->name('layout.rightupdate');
 
 	Route::get('/social','FooterController@create')->name('footer.create');
 	Route::post('/social','FooterController@store')->name('footer.store');
