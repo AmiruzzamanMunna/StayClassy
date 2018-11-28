@@ -6,6 +6,7 @@
 a:hover{
 	
 	text-decoration: none;
+	text-decoration-color: white;
 }
 .caruimg{
 	width: 100%; height:auto;
@@ -60,6 +61,10 @@ h4{
 	height: 40px;
 	width: 40px;
 }
+.rc2{
+	height: 20px;
+	width: 20px;
+}
 #na{
 	margin: 20px;
 	padding: 20px;
@@ -96,6 +101,10 @@ h4{
 }
 #uname{
 	text-align: center;
+}
+.footer-container{
+	margin-top: 90px;
+	margin-bottom: 190px;
 }
 /*Main Index*/
 /*Category*/

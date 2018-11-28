@@ -33,26 +33,11 @@ class UserController extends Controller
         $products = Product::all();
         $productsnew = Product::where('newarrival',1)->get();
         $productspopular = Product::where('sold_item',1)->get();
-        $socials = Social::all();
-        $qualitys = Quality::all();
-        $returns = Returnpolicy::all();
-        $shippings = Shipping::all();
-        $customers = Customerservice::all();
-        $contacts = Contact::all();
-        $policys = Policy::all();
-        $abouts = About::all();
         return view('User.user-login')
          ->with('products', $products)
             ->with('productsnew', $productsnew)
-            ->with('productspopular', $productspopular)
-            ->with("socials", $socials)
-            ->with("qualitys", $qualitys)
-            ->with("returns", $returns)
-            ->with("shippings", $shippings)
-            ->with("customers", $customers)
-            ->with("contacts", $contacts)
-            ->with("policys", $policys)
-            ->with("abouts", $abouts);
+            ->with('productspopular', $productspopular);
+            
     }
     public function uservarify(UserLoginRequest $request)
     {
@@ -71,24 +56,8 @@ class UserController extends Controller
     public function account(Request $request)
     {
         $users = DB::table('view_invoice')->where('id', $request->session()->get('loggedUser'))->get();
-        $socials = Social::all();
-        $qualitys = Quality::all();
-        $returns = Returnpolicy::all();
-        $shippings = Shipping::all();
-        $customers = Customerservice::all();
-        $contacts = Contact::all();
-        $policys = Policy::all();
-        $abouts = About::all();
         return view("User.account")
-        ->with("users", $users)
-        ->with("socials", $socials)
-        ->with("qualitys", $qualitys)
-        ->with("returns", $returns)
-        ->with("shippings", $shippings)
-        ->with("customers", $customers)
-        ->with("contacts", $contacts)
-        ->with("policys", $policys)
-        ->with("abouts", $abouts);
+        ->with("users", $users);
     }
     public function invoiceInfo(Request $request,$id)
     {
@@ -96,24 +65,8 @@ class UserController extends Controller
             ->where('userid',$request->session()->get('loggedUser'))
             ->where('invoice_id',$id)
             ->paginate(10);
-        $socials = Social::all();
-        $qualitys = Quality::all();
-        $returns = Returnpolicy::all();
-        $shippings = Shipping::all();
-        $customers = Customerservice::all();
-        $contacts = Contact::all();
-        $policys = Policy::all();
-        $abouts = About::all();
             return view("User.invoiceinfo")
-            ->with("orders",$orders)
-            ->with("socials", $socials)
-            ->with("qualitys", $qualitys)
-            ->with("returns", $returns)
-            ->with("shippings", $shippings)
-            ->with("customers", $customers)
-            ->with("contacts", $contacts)
-            ->with("policys", $policys)
-            ->with("abouts", $abouts);
+            ->with("orders",$orders);
     }
     public function logout(Request $request)
     {
@@ -135,13 +88,6 @@ class UserController extends Controller
         $productspopular = Product::where('sold_item',1)->get();
         $cart=Carttbl::all();
         $socials = Social::all();
-        $qualitys = Quality::all();
-        $returns = Returnpolicy::all();
-        $shippings = Shipping::all();
-        $customers = Customerservice::all();
-        $contacts = Contact::all();
-        $policys = Policy::all();
-        $abouts = About::all();
     	return view("User.index")
             ->with('cartItem', $cartItem )
             ->with('user', $user)
@@ -149,24 +95,13 @@ class UserController extends Controller
             ->with('cart', $cart)
             ->with('productsnew', $productsnew)
             ->with('productspopular', $productspopular)
-            ->with("socials", $socials)
-            ->with("qualitys", $qualitys)
-            ->with("returns", $returns)
-            ->with("shippings", $shippings)
-            ->with("customers", $customers)
-            ->with("contacts", $contacts)
-            ->with("policys", $policys)
-            ->with("abouts", $abouts);
+            ->with("socials", $socials);
     }
     public function signup()
     {
         return view("User.sign-up");
             
     }
-    // public function varify(RegisterRequest $request)
-    // {
-    //     return back();
-    // }
     public function store(UserRequest $request)
     {
         $user = new User();
@@ -193,25 +128,9 @@ class UserController extends Controller
         }
         $products = DB::table('view_product')
             ->where('category_name',$name)->paginate(5);
-        $socials = Social::all();
-        $qualitys = Quality::all();
-        $returns = Returnpolicy::all();
-        $shippings = Shipping::all();
-        $customers = Customerservice::all();
-        $contacts = Contact::all();
-        $policys = Policy::all();
-        $abouts = About::all();
         return view("User.category")
             ->with('cartItem', $cartItem)
-            ->with('products', $products)
-            ->with("socials", $socials)
-            ->with("qualitys", $qualitys)
-            ->with("returns", $returns)
-            ->with("shippings", $shippings)
-            ->with("customers", $customers)
-            ->with("contacts", $contacts)
-            ->with("policys", $policys)
-            ->with("abouts", $abouts);
+            ->with('products', $products);
     }
     public function type(Request $request, $name)
     {
@@ -223,26 +142,9 @@ class UserController extends Controller
         }
         $products = DB::table('view_product')
             ->where('type_name',$name)->paginate(5);
-        $socials = Social::all();
-        $qualitys = Quality::all();
-        $returns = Returnpolicy::all();
-        $shippings = Shipping::all();
-        $customers = Customerservice::all();
-        $contacts = Contact::all();
-        $policys = Policy::all();
-        $abouts = About::all();
         return view("User.category")
             ->with('products', $products)
-            ->with('cartItem', $cartItem)
-            ->with("socials", $socials)
-            ->with("qualitys", $qualitys)
-            ->with("returns", $returns)
-            ->with("shippings", $shippings)
-            ->with("customers", $customers)
-            ->with("contacts", $contacts)
-            ->with("policys", $policys)
-            ->with("abouts", $abouts);
-        return view("User.travelling");
+            ->with('cartItem', $cartItem);
     }
     public function newarrival(Request $request)
     {
@@ -253,26 +155,10 @@ class UserController extends Controller
             $cartItem = 0;
         }
         $products = Product::where('newarrival',1)->paginate(5);
-        $socials = Social::all();
-        $qualitys = Quality::all();
-        $returns = Returnpolicy::all();
-        $shippings = Shipping::all();
-        $customers = Customerservice::all();
-        $contacts = Contact::all();
-        $policys = Policy::all();
-        $abouts = About::all();
         return view("User.category")
             ->with('cartItem', $cartItem)
             ->with('products', $products)
-            ->with('products', $products)
-            ->with("socials", $socials)
-            ->with("qualitys", $qualitys)
-            ->with("returns", $returns)
-            ->with("shippings", $shippings)
-            ->with("customers", $customers)
-            ->with("contacts", $contacts)
-            ->with("policys", $policys)
-            ->with("abouts", $abouts);
+            ->with('products', $products);
     }
    
     public function offers(Request $request)
@@ -284,25 +170,9 @@ class UserController extends Controller
             $cartItem = 0;
         }
     	$products = Product::where('discount','>',0)->paginate(5);
-        $socials = Social::all();
-        $qualitys = Quality::all();
-        $returns = Returnpolicy::all();
-        $shippings = Shipping::all();
-        $customers = Customerservice::all();
-        $contacts = Contact::all();
-        $policys = Policy::all();
-        $abouts = About::all();
         return view("User.category")
             ->with('cartItem', $cartItem)
-            ->with('products', $products)
-            ->with("socials", $socials)
-            ->with("qualitys", $qualitys)
-            ->with("returns", $returns)
-            ->with("shippings", $shippings)
-            ->with("customers", $customers)
-            ->with("contacts", $contacts)
-            ->with("policys", $policys)
-            ->with("abouts", $abouts);
+            ->with('products', $products);
     }
      public function duffel(Request $request,$name)
     {
@@ -314,25 +184,9 @@ class UserController extends Controller
         }
         $products = DB::table('view_product')
         ->where('category_name',$name)->paginate(5);
-        $socials = Social::all();
-        $qualitys = Quality::all();
-        $returns = Returnpolicy::all();
-        $shippings = Shipping::all();
-        $customers = Customerservice::all();
-        $contacts = Contact::all();
-        $policys = Policy::all();
-        $abouts = About::all();
         return view("User.category")
             ->with('cartItem', $cartItem)
-            ->with('products', $products)
-            ->with("socials", $socials)
-            ->with("qualitys", $qualitys)
-            ->with("returns", $returns)
-            ->with("shippings", $shippings)
-            ->with("customers", $customers)
-            ->with("contacts", $contacts)
-            ->with("policys", $policys)
-            ->with("abouts", $abouts);
+            ->with('products', $products);
     }
     public function details(Request $request, $id)
     {
@@ -346,53 +200,19 @@ class UserController extends Controller
             ->where('id', $id)
             ->first();
         $user=User::all();
-        $socials = Social::all();
-        $qualitys = Quality::all();
-        $returns = Returnpolicy::all();
-        $shippings = Shipping::all();
-        $customers = Customerservice::all();
-        $contacts = Contact::all();
-        $policys = Policy::all();
-        $abouts = About::all();
         $specifications = json_decode($product->specification);
     	return view("User.details")
             ->with("cartItem", $cartItem)
             ->with("user", $user)
             ->with("product", $product)
-            ->with('specifications', $specifications)
-            ->with("socials", $socials)
-            ->with("qualitys", $qualitys)
-            ->with("returns", $returns)
-            ->with("shippings", $shippings)
-            ->with("customers", $customers)
-            ->with("contacts", $contacts)
-            ->with("policys", $policys)
-            ->with("abouts", $abouts);
-
-        
+            ->with('specifications', $specifications);   
     }
     
     public function checkout(Request $request)
     {
         $user = User::all();
-        $socials = Social::all();
-        $qualitys = Quality::all();
-        $returns = Returnpolicy::all();
-        $shippings = Shipping::all();
-        $customers = Customerservice::all();
-        $contacts = Contact::all();
-        $policys = Policy::all();
-        $abouts = About::all();
     	return view("User.checkout")
-        ->with('user',$user)
-        ->with("socials", $socials)
-        ->with("qualitys", $qualitys)
-        ->with("returns", $returns)
-        ->with("shippings", $shippings)
-        ->with("customers", $customers)
-        ->with("contacts", $contacts)
-        ->with("policys", $policys)
-        ->with("abouts", $abouts);
+        ->with('user',$user);
     }
     public function orderstore(CheckoutRequest $request)
     {
@@ -441,24 +261,8 @@ class UserController extends Controller
         $users = DB::table('view_order')
             ->where('invoice_id', $id)
             ->get();
-        $socials = Social::all();
-        $qualitys = Quality::all();
-        $returns = Returnpolicy::all();
-        $shippings = Shipping::all();
-        $customers = Customerservice::all();
-        $contacts = Contact::all();
-        $policys = Policy::all();
-        $abouts = About::all();
         return view("User.invoice")
-        ->with("users",$users)
-        ->with("qualitys", $qualitys)
-        ->with("returns", $returns)
-        ->with("shippings", $shippings)
-        ->with("customers", $customers)
-        ->with("contacts", $contacts)
-        ->with("policys", $policys)
-        ->with("abouts", $abouts);
-
+        ->with("users",$users);
     }
 
     public function cartshow(Request $request)
@@ -471,46 +275,16 @@ class UserController extends Controller
         }
         $carts = Carttbl::where('user_id', $request->session()->get('loggedUser'))
             ->get();
-        $socials = Social::all();
-        $qualitys = Quality::all();
-        $returns = Returnpolicy::all();
-        $shippings = Shipping::all();
-        $customers = Customerservice::all();
-        $contacts = Contact::all();
-        $policys = Policy::all();
-        $abouts = About::all();
         return view("User.cart")
             ->with('cartItem',$cartItem)
-            ->with('carts',$carts)
-            ->with("qualitys", $qualitys)
-            ->with("returns", $returns)
-            ->with("shippings", $shippings)
-            ->with("customers", $customers)
-            ->with("contacts", $contacts)
-            ->with("policys", $policys)
-            ->with("abouts", $abouts);
+            ->with('carts',$carts);
     }
     public function cartedit(Request $request, $id)
     {
         $cart=Carttbl::all()
         ->where('id',$id);
-        $socials = Social::all();
-        $qualitys = Quality::all();
-        $returns = Returnpolicy::all();
-        $shippings = Shipping::all();
-        $customers = Customerservice::all();
-        $contacts = Contact::all();
-        $policys = Policy::all();
-        $abouts = About::all();
         return view("User.updatecart")
-        ->with("cart",$cart)
-        ->with("qualitys", $qualitys)
-        ->with("returns", $returns)
-        ->with("shippings", $shippings)
-        ->with("customers", $customers)
-        ->with("contacts", $contacts)
-        ->with("policys", $policys)
-        ->with("abouts", $abouts);
+        ->with("cart",$cart);
     }
     public function cartupdate(Request $request,$id)
     {
@@ -525,5 +299,40 @@ class UserController extends Controller
         $cart->delete();
         return back();
     }
-    
+    public function quality(Request $request)
+    {
+        $qualitys=Quality::all();
+        return view('User.footer')
+        ->with('qualitys',$qualitys);
+    }
+    public function policy(Request $request)
+    {
+        $qualitys=Policy::all();
+        return view('User.footer')
+        ->with('qualitys',$qualitys);
+    }
+    public function shipping(Request $request)
+    {
+        $qualitys=Shipping::all();
+        return view('User.footer')
+        ->with('qualitys',$qualitys);
+    }
+    public function customerservice(Request $request)
+    {
+         $qualitys=Customerservice::all();
+        return view('User.footer')
+        ->with('qualitys',$qualitys);
+    }
+    public function about(Request $request)
+    {
+         $qualitys=About::all();
+        return view('User.footer')
+        ->with('qualitys',$qualitys);
+    }
+    public function contact(Request $request)
+    {
+        $qualitys=Contact::all();
+        return view('User.footer-contact')
+        ->with('qualitys',$qualitys);
+    }   
 }

@@ -92,28 +92,13 @@
 						<div class="col-md-8 m-auto">
 							<div class="row">
 								<div class="col-md-4 content">
-									@forelse($qualitys as $quality)
-									<h5>{{$quality->heading}}</h5>
-									<p>{{$quality->title}}</p>
-									<p>{{$quality->description}}</p>
-									@empty
-									@endforelse
+									<a href="{{route('user.quality')}}"><p id="p">Qualitys</p></a>
 								</div>
 								<div class="col-md-4 content">
-									@forelse($returns as $return)
-									<h5>{{$return->heading}}</h5>
-									<p>{{$return->title}}</p>
-									<p>{{$return->description}}</p>
-									@empty
-									@endforelse
+									<a href="{{route('user.policy')}}"><p id="p">Policys</p></a>
 								</div>
 								<div class="col-md-4 content">
-									@forelse($shippings as $shipping)
-									<h5>{{$shipping->heading}}</h5>
-									<p>{{$shipping->title}}</p>
-									<p>{{$shipping->description}}</p>
-									@empty
-									@endforelse
+									<a href="{{route('user.shipping')}}"><p id="p">Shipping</p></a>
 								</div>	
 							</div>
 						</div>
@@ -127,36 +112,19 @@
 						<div class="col-md-7 m-auto content">
 							<div class="row">
 								<div class="col-md-3 content">
-									@forelse($customers as $customer)
-									<h6>{{$customer->heading}}</h6>
-									<p>{{$customer->title}}</p>
-									<p>{{$customer->description}}</p>
-									@empty
-									@endforelse
+									<a href="{{route('user.customerservice')}}"><p id="p">Customer Service</p></a>
 								</div>
 								<div class="col-md-3 content">
-									@forelse($contacts as $contact)
-									<h6>{{$contact->heading}}</h6>
-									<p>{{$contact->contactnumber}}</p>
-									<p>{{$contact->email}}</p>
-									@empty
-									@endforelse
+									<a href="{{route('user.contact')}}"><p id="p">Contact</p></a>
 								</div>
 								<div class="col-md-3 content">
-									@forelse($policys as $policy)
-									<h6>{{$policy->heading}}</h6>
-									<p>{{$policy->title}}</p>
-									<p>{{$policy->description}}</p>
-									@empty
-									@endforelse
+									<a href="{{route('user.about')}}"><p id="p">About Us</p></a>
 								</div>
 								<div class="col-md-3 content">
-									@forelse($abouts as $about)
-									<h6>{{$about->heading}}</h6>
-									<p>{{$about->title}}</p>
-									<p>{{$about->description}}</p>
-									@empty
-									@endforelse
+									<p>Follow Us</p>
+								</div>
+								<div class="col-md-3 content">
+									
 								</div>
 							</div>
 						</div>

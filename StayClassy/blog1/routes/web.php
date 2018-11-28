@@ -16,6 +16,13 @@ Route::get('/login','UserController@userlogin')->name('user.userlogin');
 Route::post('/login','UserController@uservarify')->name('user.uservarify');
 Route::get('/','UserController@index')->name('user.index');
 
+Route::get('/Home/quality','UserController@quality')->name('user.quality');
+Route::get('/Home/policy','UserController@policy')->name('user.policy');
+Route::get('/Home/shipping','UserController@shipping')->name('user.shipping');
+Route::get('/Home/about','UserController@about')->name('user.about');
+Route::get('/Home/customerservice','UserController@customerservice')->name('user.customerservice');
+Route::get('/Home/contact','UserController@contact')->name('user.contact');
+
 Route::get('/sign','UserController@signup')->name('user.sign');
 Route::post('/sign','UserController@store')->name('user.store');
 Route::get('/account','UserController@account')->name('user.account');
