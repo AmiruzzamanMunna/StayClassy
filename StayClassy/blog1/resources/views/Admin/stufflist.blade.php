@@ -25,7 +25,6 @@
 							<th>Username</th>
 							<th>Phone</th>
 							<th>E-Mail</th>
-							<th>Update</th>
 							<th>Delete</th>
 						</tr>
 						@forelse($stuffs as $stuff)
@@ -35,7 +34,6 @@
 							<td>{{$stuff->username}}</td>
 							<td>{{$stuff->phone}}</td>
 							<td>{{$stuff->email}}</td>
-							<td><a href="{{route('stuff.edit',[$stuff->id])}}">Edit</a></td>
 							<td><a href="{{route('stuff.destroy',[$stuff->id])}}">Delete</a></td>
 						</tr>
 						@empty

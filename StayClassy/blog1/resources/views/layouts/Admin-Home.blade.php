@@ -30,11 +30,7 @@
 						<ul class="navbar-nav">
 							@if(Session::has('loggedAdmin'))
 							<li class="nav-item">
-								<a href="#" class="nav-link dropdown" data-toggle="dropdown">Account</a>
-								<div class="dropdown-menu">
-									<a href="" class="nav-link" id="drp">Profile</a>
-									<a href="" class="nav-link" id="drp">Password</a>
-								</div>
+								<a href="{{route('stuff.edit')}}" class="nav-link">Account</a>
 							</li>
 						</ul>
 					</div>

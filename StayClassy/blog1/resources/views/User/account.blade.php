@@ -25,11 +25,20 @@
                     <label class="col-md-6">{{$customer->mobile2}}</label>
                     <label class="col-md-6">Address</label>
                     <label class="col-md-6">{{$customer->address}}</label>
+                    @endforeach
                 </div>
                 <div class="row">
+                    @foreach($orders as $customer)
                     <div class="col-md-6">
-                       <a href="{{route('user.invoiceinfo',[$customer->invoice_id])}}" class="btn btn-primary">Your Order</a>
+                       <a href="{{route('user.orderdetails',[$customer->invoice_id])}}" class="btn btn-primary">All Order</a>
+                       @break
                        @endforeach
+                    </div>
+                      @foreach($invoices as $invoice)
+                     <div class="col-md-6">
+                       <a href="{{route('user.invoice',[$invoice->id])}}" class="btn btn-danger">Check Invoice</a>
+                       @break
+                        @endforeach
                     </div>
                 </div>
             </div>

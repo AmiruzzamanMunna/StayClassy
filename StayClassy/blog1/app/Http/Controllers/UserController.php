@@ -58,9 +58,21 @@ class UserController extends Controller
     }
     public function account(Request $request)
     {
-        $users = DB::table('view_invoice')->where('id', $request->session()->get('loggedUser'))->get();
+        $users = DB::table('tbl_user')->where('id', $request->session()->get('loggedUser'))->get();
+        $orders=DB::table('view_order')
+        ->where('userid',$request->session()->get('loggedUser'))->get();
+        $invoices=Invoice::where('user_id',$request->session()->get('loggedUser'))->get();
         return view("User.account")
-        ->with("users", $users);
+        ->with("users", $users)
+        ->with("invoices", $invoices)
+        ->with("orders", $orders);
+    }
+    public function orderdetails(Request $request)
+    {
+        $users=DB::table('view_order')
+        ->where('userid',$request->session()->get("loggedUser"))->get();
+        return view("User.orderdetails")
+        ->with('users',$users);
     }
     public function invoiceInfo(Request $request,$id)
     {
@@ -270,7 +282,14 @@ class UserController extends Controller
         $users = DB::table('view_order')
             ->where('invoice_id', $id)
             ->get();
+        $invoices=Invoice::where('user_id',$request->session()->get('loggedUser'))
+        ->get();
+        $total=0;
+        foreach ($invoices as $invoice) {
+            $total=$invoice->totalprice++;
+        }
         return view("User.invoice")
+        ->with("total",$total)
         ->with("users",$users);
     }
 

@@ -31,16 +31,16 @@ class StuffController extends Controller
         return view("Admin.stufflist")
         ->with("stuffs",$stuffs);
     }
-    public function edit($id)
+    public function edit(Request $request)
     {
         $stuffs = Admin::all()
-        ->where('id',$id);
+        ->where('id',$request->session()->get("loggedAdmin"));
         return view("Admin.updatestuff")
         ->with("stuffs", $stuffs);
     }
-    public function update(Request $request,$id)
+    public function update(Request $request)
     {
-        $stuff = Admin::find($request->id);
+        $stuff = Admin::find($request->session()->get("loggedAdmin"));
         $stuff->name = $request->name;
         $stuff->phone = $request->phone;
         $stuff->email = $request->email;
@@ -48,7 +48,7 @@ class StuffController extends Controller
         $stuff->confirm_password = $request->confirm_password;
         $stuff ->save();
         $request->session()->flash('message','Data Updated Successfully');
-        return redirect()->route("stuff.stufflist");
+        return back();
         
     }
    public function destroy(Request $request,$id)

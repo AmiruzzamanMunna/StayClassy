@@ -14,10 +14,6 @@
 				<form action="" name="" method="POST">
 					{{csrf_field()}}
 					<div class="form-group row">
-						<label class="col-md-4">Id:</label>
-						<div class="col-md-6">
-								{{$stuff->id}}
-						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-md-4">Name:</label>
@@ -64,7 +60,15 @@
 				@empty
 				@endforelse
 			</div>
-			<div class="card-footer"></div>
+			<div class="card-footer">
+				<div class="col-md-6 m-auto">
+					@if(session('message'))
+					<div class="alert alert-success m-auto">
+						{{session('message')}}
+					</div>
+					@endif
+				</div>
+			</div>
 		</div>
 	</div>
 @endsection

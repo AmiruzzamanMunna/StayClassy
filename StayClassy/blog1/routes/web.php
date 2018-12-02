@@ -26,6 +26,7 @@ Route::get('/Home/contact','UserController@contact')->name('user.contact');
 Route::get('/sign','UserController@signup')->name('user.sign');
 Route::post('/sign','UserController@store')->name('user.store');
 Route::get('/account','UserController@account')->name('user.account');
+Route::get('/orderdetails','UserController@orderdetails')->name('user.orderdetails');
 
 
 Route::get('/category/{name}','UserController@category')->name('user.category');
@@ -105,8 +106,8 @@ Route::group(['middleware' => ['adminSess']], function () {
 
 	Route::get('/stuff','StuffController@stufflist')->name('stuff.stufflist');
 
-	Route::get('/stuff/edit/{id}','StuffController@edit')->name('stuff.edit');
-	Route::post('/stuff/edit/{id}','StuffController@update')->name('stuff.update');
+	Route::get('/stuff/edit','StuffController@edit')->name('stuff.edit');
+	Route::post('/stuff/edit','StuffController@update')->name('stuff.update');
 	Route::get('/stuff/remove/{id}','StuffController@destroy')->name('stuff.destroy');
 
 	Route::get('/slider','LayoutController@slider')->name('layout.slider');

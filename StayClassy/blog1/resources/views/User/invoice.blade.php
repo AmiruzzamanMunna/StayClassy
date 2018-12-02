@@ -37,11 +37,15 @@
 									<label class="col-md-6">{{$user->product_name}}</label>
 								</div>
 								<div class="form-group row">
-									<label class="col-md-6">Total Price</label>
+									<label class="col-md-6">Subtotal Price</label>
 									<label class="col-md-6">{{$user->totalprice}}</label>
 								</div>
 								@empty
 								@endforelse
+								<div class="form-group row">
+									<label class="col-md-6">Total Price</label>
+									<label class="col-md-6">{{$total}}</label>
+								</div>
 							</div>
 						<div class="card-footer">Thank You for your Order</div>
 					</div>
