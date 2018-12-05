@@ -284,12 +284,14 @@ class UserController extends Controller
             ->get();
         $invoices=Invoice::where('user_id',$request->session()->get('loggedUser'))
         ->get();
+        $invoices1=Invoice::all();
         $total=0;
         foreach ($invoices as $invoice) {
             $total=$invoice->totalprice++;
         }
         return view("User.invoice")
         ->with("total",$total)
+        ->with("invoices1",$invoices1)
         ->with("users",$users);
     }
 

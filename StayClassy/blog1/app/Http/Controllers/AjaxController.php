@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Carttbl;
 use App\Product;
+use App\Transection;
 
 class AjaxController extends Controller
 {
@@ -23,9 +24,11 @@ class AjaxController extends Controller
 		}
 		$cart->total_price = $cart->unit_price * $cart->quantity;
 		if ($cart->save() > 0) {
-			return 1;
+			$numProducts = Carttbl::where('user_id', $user)
+					->sum('quantity');
+			return $numProducts;
 		}else{
-			return 0;
+			return -1;
 		}
 	}
 	public function catFilter(Request $request)
@@ -90,4 +93,21 @@ class AjaxController extends Controller
 		}
 		return $data;
 	}
+	// public function transactionHistory(Request $request)
+	// {
+	// 	$startDate = $request->startDate;
+	// 	$endDate = $request->endDate;
+	// 	$role = $request->role;
+	// 	$trHistory = '';
+	// 	if ($role == null) {
+	// 		$trHistory = Transection::where('date', '>=', $startDate)
+	// 			->where('date', '<=', $endDate)
+	// 			->get();
+	// 	}else{
+	// 		$trHistory = Transection::where('date', '>=', $startDate)
+	// 			->where('date', '<=', $endDate)
+	// 			->where('role', $role)
+	// 			->get();
+	// 	}
+	// }
 }

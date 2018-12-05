@@ -53,7 +53,10 @@
 						<div class="col-md-12">
 							<div class="row">
 								<div class="col-md-6 ml-auto">
-									<button id="bt1" type="button" class="btn btn-danger col-md-12">Save</button>
+									@foreach($users as $invoice)
+									<a href="{{route('user.pdf',[$invoice->invoice_id])}}" class="btn btn-success col-md-8">Download</a>
+									@break
+									@endforeach
 								</div>
 							</div>
 						</div>

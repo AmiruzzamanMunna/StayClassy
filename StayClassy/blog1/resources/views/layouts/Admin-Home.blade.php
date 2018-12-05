@@ -75,6 +75,7 @@
 									<div class="collapse" id="demo1">
 										<a href="{{route('product.create')}}" class="nav-link">Add New</a>
 										<a href="{{route('product.index')}}" class="nav-link">View All</a>
+										<a href="{{route('Transection.index')}}" class="nav-link">Transection</a>
 									</div>
 								</li>
 								

@@ -10,6 +10,7 @@ use App\Product;
 use App\Status;
 use App\Category;
 use App\Type;
+use App\Transection;
 
 class ProductController extends Controller
 {
@@ -74,7 +75,15 @@ class ProductController extends Controller
         $product->status_fk = $request->status;
         $product->sold_item= $request->sold_item;
         $product->specification = json_encode($request->specification);
-        $product->save();
+        if ($product->save() > 0) {
+            $transaction = new Transection();
+            $date = date('Y-m-d');
+            $amount=$request->quantity * $product->buy_price;
+            $transaction->date=$date;
+            $transaction->amount=$amount;
+            $transaction->role=0;
+            $transaction->save();
+        }
         $request->session()->flash('message','Data Inserted');
     	return redirect()->route("product.create");
     }
@@ -135,5 +144,26 @@ class ProductController extends Controller
         $product->delete();
         $request->session()->flash('message','Data deleted');
         return redirect()->route("product.index");
+    }
+    public function quantity(Request $request,$id)
+    {
+        $products=Product::where('product_quantity',$id);
+        return view("Admin.updateproductquantity")
+        ->with('products',$products);
+    }
+    public function quantityupdate(Request $request,$id)
+    {
+        $products=Product::find($id);
+        $products->product_quantity = $products->product_quantity+$request->quantity;
+        if ($products->save() > 0) {
+            $transaction = new Transection();
+            $date = date('Y-m-d');
+            $amount=$request->quantity * $products->buy_price;
+            $transaction->date=$date;
+            $transaction->amount=$amount;
+            $transaction->role=0;
+            $transaction->save();
+        }
+        return back();
     }
 }

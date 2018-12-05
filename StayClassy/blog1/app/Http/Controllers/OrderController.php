@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\OrderShow;
+use App\Order;
 use App\Invoice;
+use App\Transection;
 
 class OrderController extends Controller
 {
@@ -72,7 +74,20 @@ class OrderController extends Controller
         $orders=Invoice::where('id',$id)->first();
         if($orders){
             $orders->status=3;
-            $orders->save();
+            if($orders->save()>0){
+                $orderList = Order::where('invoice_id', $orders->id)
+                    ->get();
+                $amount = 0;
+                foreach ($orderList as $order) {
+                    $amount -= $order->totalprice;
+                }
+                $transaction = new Transection();
+                $date = date('Y-m-d');
+                $transaction->date=$date;
+                $transaction->amount = $amount;
+                $transaction->role=1;
+                $transaction->save();
+            }
         }
         return back();    
     }

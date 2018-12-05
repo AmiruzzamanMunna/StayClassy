@@ -22,10 +22,6 @@
                     <label class="col-md-6">{{$order->mobile1}}</label>
                     <label class="col-md-6">Address: </label>
                     <label class="col-md-6">{{$order->address}}</label>
-                    <label class="col-md-6">Order date: </label>
-                    <label class="col-md-6">{{$order->date}}</label>
-                    <label class="col-md-6">Status: </label>
-                    <label class="col-md-6">{{$order->status_name}}</label>
                 </div>
                 @break
                 @empty

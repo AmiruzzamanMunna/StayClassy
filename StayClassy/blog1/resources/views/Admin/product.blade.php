@@ -35,7 +35,9 @@
 							<td>{{$product->buy_price}}</td>
 							<td>{{$product->product_price}}</td>
 							<td>{{$product->discount}}</td>
-							<td>{{$product->product_quantity}}</td>
+							<td>{{$product->product_quantity}}<br>
+								<a href="{{route('Product.quantity',[$product->id])}}">Add</a>
+							</td>
 						</tr>
 						@empty
 						@endforelse

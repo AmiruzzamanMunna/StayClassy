@@ -10,10 +10,11 @@ $(document).ready(function() {
 				qnt: x,
 			},
 			success: function(response) {
-				if (response == 1) {
-					alert("Added");
+				if (response >= 0) {
+					alert("Product Added");
+					$('#item').html(response);
 				}else{
-					alert("Failed");
+					alert("You Need to Login");
 				}
 			},
 			error: function(data){
@@ -23,4 +24,29 @@ $(document).ready(function() {
 		});
 	});
 	return false;
+});
+$(document).ready(function () {
+	$("#datepicker1").on('click', function() {
+		alert();
+  	});
+	// 	var a=$("#datepicker").datepicker('getDate');
+	// 	var b=$("#datepicker1").datepicker('getDate');
+	// 	alert(a);
+	// 	alert(b);
+	// 	$.ajax({
+	// 		url:'/ajax/transection',
+	// 		method:'GET',
+	// 		data:{
+	// 			startDate=a,
+	// 			endDate=b,
+	// 		},
+	// 		success:function () {
+				
+	// 		},
+	// 		error:function (data) {
+	// 			alert("error"+data.status);
+	// 		},
+	// 	});
+	// });
+	// return false;
 });

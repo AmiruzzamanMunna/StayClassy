@@ -48,8 +48,13 @@ Route::group(['middleware' => ['userSess']], function () {
 	Route::post('/checkout','UserController@orderstore')->name('user.orderstore');
 
 	Route::get('/invoice/{id}','UserController@invoice')->name('user.invoice');
+	Route::get('/download/{id}','PdfController@pdf')->name('user.pdf');
+	
 	Route::get("/cartshow",'UserController@cartshow')->name('user.cartshow');
 	Route::get('/ajax/addCart', 'AjaxController@addCart')->name('ajax.addCart');
+
+	Route::get('/transection','TransectionController@index')->name('Transection.index');
+	Route::get('/test','PdfController@test');
 	
 
 	// Route::post("/cartshow",'UserController@orderstore')->name('user.orderstore');
@@ -86,10 +91,16 @@ Route::group(['middleware' => ['adminSess']], function () {
 
 	Route::get('/productadd','ProductController@create')->name('product.create');
 	Route::post('/productadd','ProductController@store')->name('product.store');
+	Route::post('/productadd','ProductController@store')->name('product.store');
 
 	Route::get('/productupdate/{id}','ProductController@productedit')->name('product.productedit');
 	Route::post('/productupdate/{id}','ProductController@productupdate')->name('product.updateproduct');
 	Route::get('/productdelete/{id}','ProductController@productdelete')->name('product.delete');
+	Route::get('/productquantity/{id}','ProductController@quantity')->name('Product.quantity');
+	Route::post('/productquantity/{id}','ProductController@quantityupdate')->name('Product.quantityupdate');
+
+	Route::get('/transection','TransectionController@index')->name('Transection.index');
+	Route::post('/transection','TransectionController@transactionHistory')->name('Product.transactionHistory');
 
 	Route::get('/order','OrderController@index')->name('order.index');
 	Route::get('/order/pending','OrderController@pending')->name('order.pending');
