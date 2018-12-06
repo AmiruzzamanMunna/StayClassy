@@ -62,7 +62,7 @@
 				</table>
 			</div>
 			<div class="card-footer">
-				
+				<a href="{{route('Pdf.report')}}" class="btn btn-success">Download</a>
 			</div>
 		</div>
 	</div>

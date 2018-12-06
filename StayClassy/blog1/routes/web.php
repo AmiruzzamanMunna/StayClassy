@@ -101,6 +101,7 @@ Route::group(['middleware' => ['adminSess']], function () {
 
 	Route::get('/transection','TransectionController@index')->name('Transection.index');
 	Route::post('/transection','TransectionController@transactionHistory')->name('Product.transactionHistory');
+	Route::get('/transection/download','PdfController@report')->name('Pdf.report');
 
 	Route::get('/order','OrderController@index')->name('order.index');
 	Route::get('/order/pending','OrderController@pending')->name('order.pending');

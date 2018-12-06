@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 use Dompdf\Dompdf;
 use App\Invoice;
+use App\Transection;
 use PDF;
 
 class PdfController extends Controller
@@ -25,6 +26,30 @@ class PdfController extends Controller
     	$pdf = PDF::loadview('User.downinvoice',compact('users','total'));
     	return $pdf->download('invoice.pdf');
         return view('User,invoice');
+    }
+    public function report(Request $request)
+    {
+        $transetions=Transection::all();
+        $income = 0;
+        $invest = 0;
+        $profit = 0;
+        $loss = 0;
+        if ($transetions != null) {
+            foreach ($transetions as $tr) {
+                if ($tr->role == 0) {
+                    $invest += $tr->amount;
+                }else{
+                    $income += $tr->amount;
+                }
+            }
+        }
+        if ($invest > $income) {
+            $loss = $invest - $income;
+        }else{
+            $profit = $income - $invest;
+        }
+        $pdf = PDF::loadview('Admin.report',compact('transetions','income','invest','profit','loss'));
+        return $pdf->download('report.pdf');
     }
     public function test($value='')
     {
