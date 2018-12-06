@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
+use Dompdf\Dompdf;
 use App\Invoice;
 use PDF;
 
@@ -13,7 +15,6 @@ class PdfController extends Controller
     {
     	$users = DB::table('view_order')
             ->where('invoice_id',$id)->get();
-            // dd($users);
         $invoices=Invoice::where('user_id',$request->session()->get('loggedUser'))
         ->get();
         $total=0;
@@ -21,8 +22,9 @@ class PdfController extends Controller
             $total=$invoice->totalprice++;
         }
 
-    	$pdf = PDF::loadview('User.invoice',compact('users','total'));
+    	$pdf = PDF::loadview('User.downinvoice',compact('users','total'));
     	return $pdf->download('invoice.pdf');
+        return view('User,invoice');
     }
     public function test($value='')
     {
