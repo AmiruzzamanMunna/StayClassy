@@ -42,8 +42,8 @@
 						<a href="{{route('user.category','Other')}}" class="nav-link" id="nvlk">Other Bags</a>
 					</li>
 			 	</ul>
-				<a href="{{route('user.index')}}" class="navbar-brand">Stay Classy</a>
-				<ul class="ml-auto navbar-nav">
+				<a href="{{route('user.index')}}" class="navbar-brand pull-right"><h1>Stay Classy</h1></a>
+				<ul class="navbar-nav">
 					<li class="nav-item">
 						<a href="{{route('user.newarrival')}}" class="nav-link" id="nvlk">New Arrivals</a>
 					</li>
@@ -57,7 +57,7 @@
 						<a href="{{route('user.offers')}}" class="nav-link" id="nvlk">Offers</a>
 					</li>
 					@if(Session::has('loggedUser'))
-					<li class="nav-item ">
+					<li class="nav-item">
 						<a href="{{route('user.account')}}" class="nav-link" id="nvlk">Profile</a>
 					</li>
 					<li class="nav-item">
@@ -71,13 +71,19 @@
 						<a href="{{route('user.userlogin')}}" class="nav-link" id="nvlk">Log-in</a>
 					</li>
 					@endif
-					<!-- <i class="fa fa-search m-auto" id="icon"> -->
-						<li class="nav-item col-md-4 m-auto" id="list">
-							<input type="search" placeholder="search" name="searchbox">
-						<!-- <input type="submit" class="btn btn-primary" name="" value="Search"> -->
-						</li>
-					<!-- </i> -->
-					
+					<li class="nav-item mr-auto col-md-4" id="list">
+						<form action="{{route('user.search')}}">
+							{{csrf_field()}}
+							<div class="input-group row">
+								<input type="search" class="form-control col-md-12" placeholder="search" name="searchbox">
+							<span class="input-group-btn">
+								<button type="submit" class="btn btn-default">
+									<span class="fa fa-search"></span>
+								</button>
+							</span>
+							</div>
+						</form>
+					</li>
 				</ul>
 			</div>
 		</nav>

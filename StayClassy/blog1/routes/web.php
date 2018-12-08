@@ -25,7 +25,6 @@ Route::get('/Home/contact','UserController@contact')->name('user.contact');
 
 Route::get('/sign','UserController@signup')->name('user.sign');
 Route::post('/sign','UserController@store')->name('user.store');
-Route::get('/account','UserController@account')->name('user.account');
 Route::get('/orderdetails','UserController@orderdetails')->name('user.orderdetails');
 
 
@@ -37,10 +36,15 @@ Route::get('/Duffel/{name}','UserController@duffel')->name('user.duffel');
 
 Route::get('/details/{id}','UserController@details')->name('user.details');
 Route::post('/details/{id}','UserController@cart')->name('user.cart');
-Route::get('/invoiceinfo/{id}','UserController@invoiceInfo')->name('user.invoiceinfo');
+// Route::get('/invoiceinfo/{id}','UserController@invoiceInfo')->name('user.invoiceinfo');
+Route::get('/search','UserController@search')->name('user.search');
+Route::get('/send','MailController@index')->name('Mail.index');
+Route::post('/send','MailController@mail')->name('Mail.mail');
 
 
 Route::group(['middleware' => ['userSess']], function () {
+
+	Route::get('/account','UserController@account')->name('user.account');
 
 	Route::get('/user/logout','UserController@logout')->name('user.logout');
 

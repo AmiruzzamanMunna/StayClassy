@@ -33,7 +33,7 @@
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-md-8"><a href="">Forgot Password?</a></label>
+									<label class="col-md-8"><a href="{{route('Mail.index')}}">Forgot Password?</a></label>
 								</div>
 								@if($errors->any())
 									<ul>

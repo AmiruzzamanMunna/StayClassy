@@ -67,6 +67,15 @@ class UserController extends Controller
         ->with("invoices", $invoices)
         ->with("orders", $orders);
     }
+    public function search(Request $request)
+    {
+        $search=$request->searchbox;
+        $products=Product::where('code','like','%'.$search.'%')
+        ->get();
+        return view('User.search')
+        ->with('products',$products)
+        ->with('search',$search);
+    }
     public function orderdetails(Request $request)
     {
         $users=DB::table('view_order')

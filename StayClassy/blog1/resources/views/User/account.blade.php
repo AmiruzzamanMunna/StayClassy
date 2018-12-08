@@ -34,12 +34,6 @@
                        @break
                        @endforeach
                     </div>
-                      @foreach($invoices as $invoice)
-                     <div class="col-md-6">
-                       <a href="{{route('user.invoice',[$invoice->id])}}" class="btn btn-danger">Check Invoice</a>
-                       @break
-                        @endforeach
-                    </div>
                 </div>
             </div>
             <div class="card-footer">
