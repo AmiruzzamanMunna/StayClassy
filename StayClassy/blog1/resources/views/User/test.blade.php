@@ -7,7 +7,7 @@
 	<div class="card">
 		<div class="card-header"></div>
 		<div class="card-body">
-			<form action="{{route('Mail.mail')}}}" method="POST">
+			<form action="{{route('Mail.mail')}}" method="POST">
      		{{ csrf_field() }}
 		      	<div class="form-group row">
 					<label class="col-md-3">Email:</label>
