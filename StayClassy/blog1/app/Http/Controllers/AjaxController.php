@@ -16,7 +16,11 @@ class AjaxController extends Controller
 		$cart = new Carttbl();
 		$cart->user_id = $user;
 		$cart->product_id = $request->id;
-		$cart->quantity = $request->qnt;
+		if($request->qnt <= $product->product_quantity){
+			$cart->quantity = $request->qnt;
+		}else{
+			echo "Error";
+		}
 		if ($product->discount > 0) {
 			$cart->unit_price = $product->product_price - ($product->product_price * $product->discount/100);
 		}else{

@@ -32,9 +32,9 @@
 										<input type="password" class="form-control" name="password">
 									</div>
 								</div>
-								<div class="form-group row">
+								<!-- <div class="form-group row">
 									<label class="col-md-8"><a href="{{route('Mail.index')}}">Forgot Password?</a></label>
-								</div>
+								</div> -->
 								@if($errors->any())
 									<ul>
 										@foreach($errors->all() as $error)

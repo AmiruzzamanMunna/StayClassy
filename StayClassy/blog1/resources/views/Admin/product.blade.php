@@ -65,11 +65,6 @@
 				</div>
 				<div class="card-body">
 					<form action="" method="get">
-						<div class="form-group row">
-							<label>
-								<input type="checkbox" class="categoriesall" name="new">Select All
-							</label>
-						</div>
 						@foreach($categories as $category)
 						<div class="form-group row">
 							<label class="cat">
@@ -87,11 +82,6 @@
 					<h4> Category Types</h4>
 				</div>
 				<div class="card-body">
-					<div class="form-group row">
-						<label>
-							<input type="checkbox" name="new6">Select All
-						</label>
-					</div>
 					@foreach($types as $type)
 						<div class="form-group type row">
 							<label class="">
