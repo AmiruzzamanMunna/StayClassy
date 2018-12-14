@@ -11,14 +11,13 @@ $(document).ready(function() {
 			},
 			success: function(response) {
 				if (response >= 0) {
-					alert("Product Added");
 					$('#item').html(response);
 				}else{
 					alert("You Need to Login");
 				}
 			},
 			error: function(data){
-				alert("error"+data.status);
+				alert("Sorry Stock is not Available");
 			},
 
 		});

@@ -29,6 +29,13 @@
 													<div class="form-group row">
 														<label class="col-md-6">Quantity:</label>
 														<input type="text" name="Quantity" value="{{$cart->quantity}}">
+														@if($errors->any())
+															<ul class="m-auto">
+																@foreach($errors->all() as $error)
+																	<li>{{$error}}</li>
+																@endforeach
+															</ul>
+														@endif
 													</div>
 													<div class=" form-group row">
 														<div class="col-md-7 m-auto">

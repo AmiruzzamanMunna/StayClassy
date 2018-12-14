@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageServiceProvider;
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\QuantityRequest;
 use App\Product;
 use App\Status;
 use App\Category;
@@ -151,10 +152,10 @@ class ProductController extends Controller
         return view("Admin.updateproductquantity")
         ->with('products',$products);
     }
-    public function quantityupdate(Request $request,$id)
+    public function quantityupdate(QuantityRequest $request,$id)
     {
         $products=Product::find($id);
-        $products->product_quantity = $products->product_quantity+$request->quantity;
+        $products->product_quantity = $products->product_quantity+$request->Quantity;
         if ($products->save() > 0) {
             $transaction = new Transection();
             $date = date('Y-m-d');
@@ -164,6 +165,7 @@ class ProductController extends Controller
             $transaction->role=0;
             $transaction->save();
         }
+        $request->session()->flash('message','Data Updated');
         return back();
     }
 }

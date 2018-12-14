@@ -11,6 +11,8 @@ use App\Http\Requests\StuffRequest;
 use App\Http\Requests\CheckoutRequest;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\QuantityRequest;
+use App\Http\Requests\SearchRequest;
 use App\Product;
 use App\Social;
 use App\Quality;
@@ -70,7 +72,7 @@ class UserController extends Controller
     public function search(Request $request)
     {
         $search=$request->searchbox;
-        $products=Product::where('code','like','%'.$search.'%')
+        $products=Product::where('product_name','like','%'.$search.'%')
         ->get();
         return view('User.search')
         ->with('products',$products)
@@ -325,7 +327,7 @@ class UserController extends Controller
         return view("User.updatecart")
         ->with("cart",$cart);
     }
-    public function cartupdate(Request $request,$id)
+    public function cartupdate(QuantityRequest $request,$id)
     {
         $cart=Carttbl::find($request->id);
         $cart->quantity=$request->Quantity;

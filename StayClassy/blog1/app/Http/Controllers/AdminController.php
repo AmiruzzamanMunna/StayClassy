@@ -8,6 +8,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\AdminRequest;
 use App\Http\Requests\AdminLoginRequest;
+use App\Http\Requests\QuantityRequest;
 use App\Admin;
 use App\OrderShow;
 use App\Order;
