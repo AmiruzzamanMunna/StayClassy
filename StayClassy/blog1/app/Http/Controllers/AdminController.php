@@ -44,7 +44,7 @@ class AdminController extends Controller
         ->with("current_order",$current_order)
         ->with("current_deliver",$current_deliver)
         ->with("current_return",$current_return)
-        ->with("total",$total);
+        ->with("totals",$totals);
     }
     public function adminsignup()
     {

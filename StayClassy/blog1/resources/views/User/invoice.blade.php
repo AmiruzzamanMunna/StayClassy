@@ -33,6 +33,10 @@
 								</div>
 								@forelse($users as $user)
 								<div class="form-group row">
+									<label class="col-md-6">Order No:</label>
+									<label class="col-md-6">{{$user->id}}</label>
+								</div>
+								<div class="form-group row">
 									<label class="col-md-6">Product Code</label>
 									<label class="col-md-6">{{$user->code}}</label>
 								</div>
@@ -49,6 +53,14 @@
 								<div class="form-group row">
 									<label class="col-md-6">Total Price</label>
 									<label class="col-md-6">{{$total}}</label>
+								</div>
+								<div class="form-group row">
+									<label class="col-md-6">Order Date</label>
+									@forelse($users as $user)
+									<label class="col-md-6">{{$user->date}}</label>
+									@break
+									@empty
+									@endforelse
 								</div>
 							</div>
 						<div class="card-footer">Thank You for your Order</div>

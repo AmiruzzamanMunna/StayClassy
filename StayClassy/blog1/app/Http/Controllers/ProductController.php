@@ -156,15 +156,16 @@ class ProductController extends Controller
     {
         $products=Product::find($id);
         $products->product_quantity = $products->product_quantity+$request->Quantity;
-        if ($products->save() > 0) {
-            $transaction = new Transection();
-            $date = date('Y-m-d');
-            $amount=$request->quantity * $products->buy_price;
-            $transaction->date=$date;
-            $transaction->amount=$amount;
-            $transaction->role=0;
-            $transaction->save();
-        }
+        $products->save();
+        // if ($products->save() > 0) {
+        //     $transaction = new Transection();
+        //     $date = date('Y-m-d');
+        //     $amount=$request->quantity * $products->buy_price;
+        //     $transaction->date=$date;
+        //     $transaction->amount=$amount;
+        //     $transaction->role=0;
+        //     $transaction->save();
+        // }
         $request->session()->flash('message','Data Updated');
         return back();
     }

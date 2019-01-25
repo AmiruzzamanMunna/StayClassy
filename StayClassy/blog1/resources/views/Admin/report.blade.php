@@ -2,9 +2,20 @@
 <html>
 <head>
 	<title></title>
+	<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;    
+}
+</style>
 </head>
 <body>
-	<table class="table table-bordered table-striped">
+	<h1>Stay Classy</h1>
+	<table class="table table-bordered table-striped" style="width: 100%">
 		<tr>
 			<th>Date</th>
 			<th>Amount</th>

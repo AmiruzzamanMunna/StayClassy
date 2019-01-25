@@ -12,7 +12,7 @@
 @section('container')
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8 mr-auto">
+			<div class="col-md-8 m-auto">
 				<form action="" method="POST" id="checkout-form">
 					{{csrf_field()}}
 					<div class="card crd">

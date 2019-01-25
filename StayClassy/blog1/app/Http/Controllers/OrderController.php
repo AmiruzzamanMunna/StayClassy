@@ -98,7 +98,7 @@ class OrderController extends Controller
                 $date = date('Y-m-d');
                 $transaction->date=$date;
                 $transaction->amount = $amount;
-                $transaction->role=1;
+                $transaction->role=0;
                 $transaction->save();
             }
         }

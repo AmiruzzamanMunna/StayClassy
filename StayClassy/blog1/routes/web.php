@@ -57,7 +57,7 @@ Route::group(['middleware' => ['userSess']], function () {
 	Route::get("/cartshow",'UserController@cartshow')->name('user.cartshow');
 	Route::get('/ajax/addCart', 'AjaxController@addCart')->name('ajax.addCart');
 
-	Route::get('/transection','TransectionController@index')->name('Transection.index');
+	// Route::get('/transection','TransectionController@index')->name('Transection.index');
 	Route::get('/test','PdfController@test');
 	
 

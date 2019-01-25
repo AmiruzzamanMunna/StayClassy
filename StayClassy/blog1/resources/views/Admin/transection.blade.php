@@ -21,7 +21,7 @@
 								<div class="row m-auto">
 									Date: <input type="text" id="datepicker" name="startdate" class="target">&nbsp;&nbsp;&nbsp;
 									TO:<input type="text" id="datepicker1" name="enddate" class="target">&nbsp;&nbsp;&nbsp;
-									<input type="submit" name="transaction" class="btn btn-success" value="Submit">
+									<input type="submit" name="transaction" class="btn btn-danger" value="Submit">
 								</div>	
 							</form>
 						</th>
@@ -42,6 +42,7 @@
 							</td>
 						</tr>
 						@empty
+						<h1>Sorry No Transection Right now</h1>
 						@endforelse
 						<tr>
 							<td>Total</td>
