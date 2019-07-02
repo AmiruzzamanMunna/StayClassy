@@ -71,6 +71,7 @@
 					<div class="card-body">
 						<table class="table table-bordered table-md table-striped">
 							<tr>
+								<th>SL No</th>
 								<th>Customer Name</th>
 								<th>Mobile 1</th>
 								<th>Address</th>
@@ -79,8 +80,12 @@
 								<th>Price</th>
 								<th>Details</th>
 							</tr>
+							@php
+								$i=0
+							@endphp
 							@foreach($orders as $order)
 							<tr>
+								<td>{{(($orders->currentpage()-1)*$orders->perpage())+$loop->iteration}}</td>
 								<td>{{$order->name}}</td>
 								<td>{{$order->mobile1}}</td>
 								<td>{{$order->address}}</td>
@@ -93,11 +98,11 @@
 						</table>
 					</div>
 					<div class="card-footer">
-						
 						<div class="row">
 							<dir class="col-md-12">
 								<div class="row">
 									<div class="col-md-2 m-auto">
+										<p>Page {{$orders->currentpage()}} of {{$orders->lastpage()}} (Totals:{{$orders->total()}}) </p>
 										{{$orders->links()}}
 									</div>
 								</div>

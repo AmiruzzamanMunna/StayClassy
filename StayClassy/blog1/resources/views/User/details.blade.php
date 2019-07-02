@@ -71,6 +71,18 @@
 															@endif
 														</label>
 													</div>
+													@if($product->size)
+													<div class="form-group row">
+														<label class="col-md-6 lbl">Size:</label>
+														<div class="col-md-6">
+															<select class="form-control">
+																@foreach($sizes as $test)
+																<option>{{$test}}</option>
+																@endforeach
+															</select>
+														</div>
+													</div>
+													@endif
 													<div class="form-group row">
 														<label class="col-md-6">Discount:</label>
 														<label class="col-md-6">{{$product->discount}}</label>

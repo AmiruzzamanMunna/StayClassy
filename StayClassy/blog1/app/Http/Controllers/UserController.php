@@ -232,10 +232,12 @@ class UserController extends Controller
             ->where('id', $id)
             ->first();
         $user=User::all();
+        $sizes=json_decode($product->size);
         $specifications = json_decode($product->specification);
     	return view("User.details")
             ->with("cartItem", $cartItem)
             ->with("user", $user)
+            ->with("sizes", $sizes)
             ->with("product", $product)
             ->with('specifications', $specifications);   
     }

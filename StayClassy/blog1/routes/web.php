@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('/ajax','TestController@ajax')->name('test.ajax');
+Route::get('/getValues','TestController@getValues')->name('test.getValues');
+
+Route::get('/list','TestController@test')->name('test.test');
+Route::delete('/delete','TestController@deletelist')->name('test.deletelist');
 
 Route::get('/login','UserController@userlogin')->name('user.userlogin');
 Route::post('/login','UserController@uservarify')->name('user.uservarify');
